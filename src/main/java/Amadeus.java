@@ -1,3 +1,7 @@
+/**
+ * Main Class for Amadeus Chatbot Interface
+ */
+
 public class Amadeus
 {
     private static final String DIVIDER = "=".repeat(100);
@@ -42,7 +46,11 @@ public class Amadeus
                     """;
     //endregion
 
-    // Slow Typing Effect for Printing String
+    /**
+     * Provides typing text visual effect to printing string
+     * @param text String to be printed
+     * @param duration Time paused between each symbol
+     */
     public static void slowPrint(String text, int duration)
     {
         for (int i = 0; i < text.length(); i++)
@@ -56,7 +64,9 @@ public class Amadeus
         }
     }
 
-    // Opening Message
+    /**
+     * Booting up messages shown when Amadeus awakens
+     */
     public static void logIn()
     {
         System.out.println(DIVIDER);
@@ -66,7 +76,10 @@ public class Amadeus
         slowPrint("I look forward to working with you.\n",10);
         System.out.println(DIVIDER);
     }
-    // Closing Message
+
+    /**
+     * Shutdown messages shown when Amadeus sleeps
+     */
     public static void logOff()
     {
         //System.out.println(DIVIDER);
@@ -78,5 +91,6 @@ public class Amadeus
     {
         logIn();
         UserInput.getCommand();
+        logOff();
     }
 }
