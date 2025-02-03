@@ -1,6 +1,10 @@
 /**
- * Main Class for Amadeus Chatbot Interface
+ * The main class for the Amadeus chatbot interface.
+ * Handles startup, shutdown messages, and user interaction.
  */
+
+
+import userinterface.UserInput;
 
 public class Amadeus
 {
@@ -47,9 +51,10 @@ public class Amadeus
     //endregion
 
     /**
-     * Provides typing text visual effect to printing string
-     * @param text String to be printed
-     * @param duration Time paused between each symbol
+     * Prints a string to the console with a typing effect.
+     *
+     * @param text The text to be printed.
+     * @param duration The delay (in milliseconds) between each character.
      */
     public static void slowPrint(String text, int duration)
     {
@@ -65,20 +70,24 @@ public class Amadeus
     }
 
     /**
-     * Booting up messages shown when Amadeus awakens
+     * Displays the boot sequence when Amadeus starts.
+     * Shows login messages and an introduction.
      */
     public static void logIn()
     {
         System.out.println(DIVIDER);
         slowPrint("User ID: Salieri\nLogging in...\nLaunching...\n", 50);
         slowPrint(AMADEUS, 1);
-        slowPrint("Nice to meet you, I'm Kurisu Makise, a.k.a. Amadeus.\n",10);
-        slowPrint("I look forward to working with you.\n",10);
+        slowPrint("""
+                Nice to meet you, I'm Kurisu Makise, a.k.a. Amadeus.
+                I look forward to working with you.
+                """,10);
         System.out.println(DIVIDER);
     }
 
     /**
-     * Shutdown messages shown when Amadeus sleeps
+     * Displays shutdown messages when Amadeus is exiting.
+     * Prints a farewell message.
      */
     public static void logOff()
     {

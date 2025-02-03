@@ -1,17 +1,25 @@
 /**
- * Class to recognise unique number words
+ * A utility class for converting written number words into their numeric equivalents.
+ * This implementation follows a rule-based approach without relying on a hash map
+ * to allow flexibility and expansion.
  */
 
+package userinterface;
 import java.util.*;
 
 /**
- * Rule-Based Number Conversion (No Hash Map)
- * Breaks down words into meaningful parts
- * Supports expansion without manually adding numbers
- * Cannot use Map.of(...) because Java has a limit of 10 key-value pairs
+ * Implements rule-based number conversion from words to integers.
+ * Handles numbers up to the thousands.
+ * Supports numbers with hyphens (e.g., "twenty-one") by replacing hyphens with spaces.
+ * Ignores the word "and" for better parsing.
+ * Ensures incorrect inputs return -1 as an error indicator.
  */
+
 public class NumberConverter
 {
+    /**
+     * Mapping of unit numbers (one to nineteen) to their integer values.
+     */
     private static final Map<String, Integer> UNITS = Map.ofEntries(
             Map.entry("one", 1), Map.entry("two", 2), Map.entry("three", 3),
             Map.entry("four", 4), Map.entry("five", 5), Map.entry("six", 6),
@@ -22,21 +30,31 @@ public class NumberConverter
             Map.entry("nineteen", 19)
     );
 
+    /**
+     * Mapping of tens multiples (twenty to ninety) to their integer values.
+     */
     private static final Map<String, Integer> TENS = Map.ofEntries(
             Map.entry("twenty", 20), Map.entry("thirty", 30), Map.entry("forty", 40),
             Map.entry("fifty", 50), Map.entry("sixty", 60), Map.entry("seventy", 70),
             Map.entry("eighty", 80), Map.entry("ninety", 90)
     );
 
-    // I assume millions are not needed
+    /**
+     * Mapping of large number multipliers (hundred, thousand) to their values.
+     */
     private static final Map<String, Integer> MULTIPLIERS = Map.ofEntries(
             Map.entry("hundred", 100), Map.entry("thousand", 1000)
     );
 
     /**
-     * Converts a given number word to an integer
-     * @param input String of the word to be converted into a number
-     * @return Integer output of the written number string
+     * Converts a number written in words into its integer representation.
+     * Supports numbers from "one" to "nine thousand nine hundred ninety-nine."
+     * Handles compound numbers like "twenty-one" or "three hundred and five."
+     * Ignores the word "and" for natural language compatibility.
+     * Returns -1 if input is invalid or contains unrecognized words.
+     *
+     * @param input The number written in words (e.g., "two hundred forty-five").
+     * @return The integer representation of the input word, or -1 for invalid input.
      */
     public static int wordToNumber(String input)
     {
@@ -78,8 +96,7 @@ public class NumberConverter
         return result + current;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // Test Cases
         System.out.println(wordToNumber("two hundred and forty-five")); // 245
         System.out.println(wordToNumber("three thousand one hundred")); // 3100
