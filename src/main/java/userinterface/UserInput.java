@@ -24,7 +24,7 @@ public class UserInput
 
     /**
      * Continuously reads user input from the console and processes commands.
-     * The loop runs until the user enters the exit command 'BYE_COMMAND'.
+     * The loop runs until the user mentions the exit command 'bye'.
      * Each command is executed using the `scanInput` method.
      */
     public static void getCommand()
@@ -34,9 +34,10 @@ public class UserInput
             input = in.nextLine(); // User Input
             System.out.println(DIVIDER);
             scanInput(input); // Execute Command
-            System.out.println(DIVIDER);
-
-        } while(!(input.equalsIgnoreCase(BYE_COMMAND)));
+            if (!input.toLowerCase().startsWith(BYE_COMMAND)) {
+                System.out.println(DIVIDER);
+            }
+        } while(!input.toLowerCase().startsWith(BYE_COMMAND));
     }
 
     /**
@@ -71,7 +72,7 @@ public class UserInput
     {
         String[] words = input.split(" ", 2); // Split into command + optional argument
         String command = words[0].toLowerCase();
-        String argument = words.length > 1 ? words[1] : ""; // The rest of the input
+        String argument = words.length > 1 ? words[1] : "";
 
         switch (command)
         {

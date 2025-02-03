@@ -3,7 +3,6 @@
  * Handles startup, shutdown messages, and user interaction.
  */
 
-
 import userinterface.UserInput;
 
 public class Amadeus
@@ -91,7 +90,6 @@ public class Amadeus
      */
     public static void logOff()
     {
-        //System.out.println(DIVIDER);
         slowPrint("Goodbye. May our timelines converge once more.\nEl Psy Kongroo\n",30);
         System.out.println(DIVIDER);
     }
@@ -102,4 +100,27 @@ public class Amadeus
         UserInput.getCommand();
         logOff();
     }
+
+    /* input.txt Test Cases
+    ➤ Empty Task List
+    ➤ Adding a ToDo Task
+    ➤ Adding a ToDo with Missing Description
+
+    ➤ Adding a Deadline Task
+    ➤ Invalid Deadline Format
+    ➤ Adding a Deadline with Missing Description
+
+    ➤ Adding an Event Task
+    ➤ Invalid Event Format
+    ➤ Adding an Event with Missing Description
+
+    ➤ Adding a Generic Task
+    ➤ Marking a Task as Complete
+    ➤ Marking a Task as Incomplete (Non-Numeric)
+    ➤ Invalid Task Index (Mark/Unmark)
+    ➤ Missing Task Index (Mark/Unmark)
+
+    ➤ Listing All Tasks
+    ➤ Exiting the Application
+    */
 }

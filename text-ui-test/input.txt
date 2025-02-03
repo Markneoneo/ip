@@ -1,0 +1,16 @@
+list
+todo Buy groceries
+todo
+deadline Submit report /by 2023-10-31
+deadline Submit report
+deadline
+event Team meeting /from 2023-10-25 2pm /to 4pm
+event Team meeting /from 2pm
+event
+Read a book
+mark 1
+unmark one
+mark 10 twenty
+mark
+list
+bye
