@@ -20,8 +20,9 @@ public class TaskList
      * The task is inserted into the appropriate section of the list (after existing Deadlines).
      *
      * @param input The user input containing the task description and due date (e.g., "return book /by Sunday").
+     * @throws AmadeusException If the input format is invalid.
      */
-    public static void storeDeadline(String input)
+    public static void storeDeadline(String input) throws AmadeusException
     {
         String[] parts = input.split(" /by ", 2); // Split into description and date
         if (parts.length == 2)
@@ -38,7 +39,7 @@ public class TaskList
 
             System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
         } else {
-            System.out.println("⚠️Invalid deadline format! Use: <description> /by <date>");
+            throw new AmadeusException("⚠️Invalid deadline format! Use: <description> /by <date>");
         }
     }
 
@@ -50,8 +51,9 @@ public class TaskList
      *
      * @param input The user input containing the task description, start time, and end time
      *              (e.g., "project meeting /from Mon 2pm /to 4pm").
+     * @throws AmadeusException If the input format is invalid.
      */
-    public static void storeEvent(String input)
+    public static void storeEvent(String input) throws AmadeusException
     {
         String[] parts = input.split(" /from ", 2); // Split into description and from/to
         if (parts.length == 2)
@@ -72,10 +74,10 @@ public class TaskList
 
                 System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
             } else {
-                System.out.println("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
+                throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
             }
         } else {
-            System.out.println("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
+            throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
         }
     }
 
@@ -120,8 +122,9 @@ public class TaskList
      *
      * @param index  The index of the task to update (1-based).
      * @param status The new completion status (true for complete, false for incomplete).
+     * @throws AmadeusException If the task index is invalid.
      */
-    public static void markDone(int index, boolean status)
+    public static void markDone(int index, boolean status) throws AmadeusException
     {
         try {
             taskList.get(index - 1).updateDone(status);
@@ -131,7 +134,7 @@ public class TaskList
             taskList.get(index - 1).printTask();
 
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("⚠️Task Index not found! Please try again.");
+            throw new AmadeusException("⚠️Task Index not found! Please try again.");
         }
     }
 

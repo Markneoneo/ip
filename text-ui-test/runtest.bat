@@ -4,6 +4,7 @@ REM create bin directory if it doesn't exist
 if not exist ..\bin mkdir ..\bin
 
 REM delete output from previous run
+if exist FULL_OUTPUT.TXT del FULL_OUTPUT.TXT
 if exist ACTUAL.TXT del ACTUAL.TXT
 if exist SKIP_INTRO.TXT del SKIP_INTRO.TXT
 
@@ -15,20 +16,20 @@ IF ERRORLEVEL 1 (
 )
 REM no error here, errorlevel == 0
 
-REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -Dfile.encoding=UTF-8 -classpath ..\bin Amadeus < input.txt > ACTUAL.TXT
+REM run the program, feed commands from input.txt file and redirect the output to the FULL_OUTPUT.TXT
+java -Dfile.encoding=UTF-8 -classpath ..\bin Amadeus < input.txt > FULL_OUTPUT.TXT
 
 REM Skips the Amadeus Introduction for comparison
-powershell -Command "Get-Content ACTUAL.TXT | Select-Object -Skip 42 | Set-Content SKIP_INTRO.TXT"
+powershell -Command "Get-Content FULL_OUTPUT.TXT | Select-Object -Skip 42 | Set-Content SKIP_INTRO.TXT"
 
 REM compare the output to the expected output
 FC SKIP_INTRO.TXT EXPECTED.TXT
 IF ERRORLEVEL 1 (
     echo ********** TEST FAILED **********
-    echo The contents of ACTUAL.TXT and EXPECTED.TXT do not match.
+    echo The contents of SKIP_INTRO.TXT and EXPECTED.TXT do not match.
     exit /b 1
 ) ELSE (
     echo ********** TEST PASSED **********
-    echo The contents of ACTUAL.TXT and EXPECTED.TXT match.
+    echo The contents of SKIP_INTRO.TXT and EXPECTED.TXT match.
     exit /b 0
 )
