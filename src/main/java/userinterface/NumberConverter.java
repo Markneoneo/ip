@@ -14,7 +14,6 @@ import java.util.*;
  * Ignores the word "and" for better parsing.
  * Ensures incorrect inputs return -1 as an error indicator.
  */
-
 public class NumberConverter
 {
     /**

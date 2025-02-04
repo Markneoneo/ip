@@ -33,7 +33,13 @@ public class UserInput
         do {
             input = in.nextLine(); // User Input
             System.out.println(DIVIDER);
-            scanInput(input); // Execute Command
+
+            try {
+                scanInput(input); // Execute Command
+            } catch (AmadeusException e) {
+                System.out.println(e.getMessage()); // Print custom error message
+            }
+
             if (!input.toLowerCase().startsWith(BYE_COMMAND)) {
                 System.out.println(DIVIDER);
             }
@@ -67,8 +73,9 @@ public class UserInput
      * and processed accordingly. Invalid or missing arguments result in error messages.
      *
      * @param input The full command input provided by the user.
+     * @throws AmadeusException If the command or input is invalid.
      */
-    public static void scanInput(String input)
+    public static void scanInput(String input) throws AmadeusException
     {
         String[] words = input.split(" ", 2); // Split into command + optional argument
         String command = words[0].toLowerCase();
@@ -96,10 +103,10 @@ public class UserInput
                     {
                         TaskList.markDone(index, command.equals(MARK_COMMAND)); // Update status
                     } else {
-                        System.out.println("⚠️Invalid Task Index! Please provide a valid number."); // Invalid Number
+                        throw new AmadeusException("⚠️Invalid Task Index! Please provide a valid number."); // Invalid Number
                     }
                 } else {
-                    System.out.println("⚠️Missing Task Index! Please provide desired number."); // No Number
+                    throw new AmadeusException("⚠️Missing Task Index! Please provide desired number."); // No Number
                 }
                 break;
 
@@ -117,7 +124,7 @@ public class UserInput
                         case TODO_COMMAND -> TaskList.storeToDo(argument);
                     }
                 } else {
-                    System.out.println("⚠️Please provide the " + command.toLowerCase() + " task name/description!"); // No Argument
+                    throw new AmadeusException("⚠️Please provide the " + command.toLowerCase() + " task name/description!"); // No Argument
                 }
                 break;
 
