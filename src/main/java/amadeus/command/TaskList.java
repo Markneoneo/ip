@@ -14,6 +14,7 @@ public class TaskList
     // ArrayList to store all tasks, categorized by type (Deadline, Event, ToDo, etc.).
     public static ArrayList<Task> taskList = new ArrayList<>();
 
+    //region Store Tasks
     /**
      * Adds a new Deadline task to the task list.
      * The input string is expected to contain a description and a due date, separated by "/by".
@@ -26,7 +27,7 @@ public class TaskList
     {
         String[] parts = input.split(" /by ", 2); // Split into description and date
 
-        if (parts.length != 2)
+        if (parts.length != 2) // Missing Due Date
         {
             throw new AmadeusException("⚠️Invalid deadline format! Use: <description> /by <date>");
         }
@@ -85,7 +86,7 @@ public class TaskList
         String name = parts[0].trim();
         String[] fromToParts = parts[1].split(" /to ", 2); // Split into from and to
 
-        if (parts.length != 2 || fromToParts.length != 2)
+        if (parts.length != 2 || fromToParts.length != 2) // Missing from/to
         {
             throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
         }
@@ -128,7 +129,7 @@ public class TaskList
         taskList.add(t); // Add generic tasks at the end
         System.out.println("✍️Understood! The following Task has been stored:\n╰┈➤ " + t);
     }
-
+    //endregion
 
     /**
      * Updates the completion status of a specific task in the list.
@@ -155,6 +156,25 @@ public class TaskList
         }
     }
 
+    /**
+     * Deletes a specific task from the task list.
+     * The task is identified by its index. If the index is invalid, an error message is displayed.
+     *
+     * @param index The index of the task to delete (1-based).
+     * @throws AmadeusException If the task index is invalid.
+     */
+    public static void deleteTask(int index) throws AmadeusException
+    {
+        try {
+            Task removedTask = taskList.remove(index - 1); // Remove the task at the specified index
+
+            System.out.print("🗑️Understood, the following task has been deleted:\n╰┈➤ " + index + ". ");
+            removedTask.printTask();
+
+        } catch (IndexOutOfBoundsException e) {
+            throw new AmadeusException("⚠️Task Index not found! Please try again.");
+        }
+    }
 
     /**
      * Displays all tasks in the list, organized by category (Deadlines, Events, ToDos, Misc Tasks).

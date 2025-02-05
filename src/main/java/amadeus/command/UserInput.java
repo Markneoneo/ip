@@ -6,15 +6,19 @@
  */
 
 package amadeus.command;
+import amadeus.Amadeus;
+
 import java.util.Scanner; // Methods for input
 
 public class UserInput
 {
     // Constants representing valid user commands
+    public final static String COMMAND_LIST = "commands";
     public final static String BYE_COMMAND = "bye";
     public final static String LIST_COMMAND = "list";
     public final static String MARK_COMMAND = "mark";
     public final static String UNMARK_COMMAND = "unmark";
+    public final static String DELETE_COMMAND = "delete";
     public final static String DEADLINE_COMMAND = "deadline";
     public final static String EVENT_COMMAND = "event";
     public final static String TODO_COMMAND = "todo";
@@ -83,6 +87,11 @@ public class UserInput
 
         switch (command)
         {
+            // Shows the user all possible Amadeus commands
+            case COMMAND_LIST:
+                Amadeus.showCommands();
+                break;
+
             // Exits the command loop and terminates the interaction.
             case BYE_COMMAND:
                 break;
@@ -92,21 +101,25 @@ public class UserInput
                 TaskList.printTaskList();
                 break;
 
-            // Marks or unmarks a task as done based on the provided task index.
+            // Marks, unmarks or deletes a task as done based on the provided task index.
             // Displays an error if the index is missing or invalid.
             case MARK_COMMAND:
             case UNMARK_COMMAND:
-                if (!argument.isEmpty())
-                {
-                    int index = extractIndex(argument); // Get Task Index
-                    if (index != -1)
-                    {
-                        TaskList.markDone(index, command.equals(MARK_COMMAND)); // Update status
-                    } else {
-                        throw new AmadeusException("⚠️Invalid Task Index! Please provide a valid number."); // Invalid Number
-                    }
-                } else {
-                    throw new AmadeusException("⚠️Missing Task Index! Please provide desired number."); // No Number
+            case DELETE_COMMAND:
+                if (argument.isEmpty()) { // Missing Number
+                    throw new AmadeusException("⚠️Missing Task Index! Please provide desired number.");
+                }
+                int index = extractIndex(argument); // Get Task Index
+
+                if (index == -1) { // Invalid Number
+                    throw new AmadeusException("⚠️Invalid Task Index! Please provide a valid number.");
+                }
+
+                if (command.equals(DELETE_COMMAND)) {
+                    TaskList.deleteTask(index);
+                }
+                else { // Update status
+                    TaskList.markDone(index, command.equals(MARK_COMMAND));
                 }
                 break;
 
@@ -115,16 +128,13 @@ public class UserInput
             case DEADLINE_COMMAND:
             case EVENT_COMMAND:
             case TODO_COMMAND:
-                if (!argument.isEmpty())
-                {
-                    switch (command)
-                    {
-                        case DEADLINE_COMMAND -> TaskList.storeDeadline(argument);
-                        case EVENT_COMMAND -> TaskList.storeEvent(argument);
-                        case TODO_COMMAND -> TaskList.storeToDo(argument);
-                    }
-                } else {
-                    throw new AmadeusException("⚠️Please provide the " + command.toLowerCase() + " task name/description!"); // No Argument
+                if (argument.isEmpty()) { // Missing Argument
+                    throw new AmadeusException("⚠️Please provide the " + command.toLowerCase() + " task name/description!");
+                }
+                switch (command) {
+                    case DEADLINE_COMMAND -> TaskList.storeDeadline(argument);
+                    case EVENT_COMMAND -> TaskList.storeEvent(argument);
+                    case TODO_COMMAND -> TaskList.storeToDo(argument);
                 }
                 break;
 
