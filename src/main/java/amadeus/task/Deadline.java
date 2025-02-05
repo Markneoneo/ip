@@ -3,7 +3,7 @@
  * Inherits from the {@link Task} class.
  */
 
-package tasktypes;
+package amadeus.task;
 
 public class Deadline extends Task
 {

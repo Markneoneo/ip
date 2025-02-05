@@ -5,7 +5,7 @@
  * user interaction until the exit command is received.
  */
 
-package userinterface;
+package amadeus.command;
 import java.util.Scanner; // Methods for input
 
 public class UserInput

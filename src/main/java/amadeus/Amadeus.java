@@ -3,7 +3,8 @@
  * Handles startup, shutdown messages, and user interaction.
  */
 
-import userinterface.UserInput;
+package amadeus;
+import amadeus.command.UserInput;
 
 public class Amadeus
 {
@@ -55,7 +56,7 @@ public class Amadeus
      * @param text The text to be printed.
      * @param duration The delay (in milliseconds) between each character.
      */
-    public static void slowPrint(String text, int duration)
+    public static void printSlow(String text, int duration)
     {
         for (int i = 0; i < text.length(); i++)
         {
@@ -75,9 +76,9 @@ public class Amadeus
     public static void logIn()
     {
         System.out.println(DIVIDER);
-        slowPrint("User ID: Salieri\nLogging in...\nLaunching...\n", 50);
-        slowPrint(AMADEUS, 1);
-        slowPrint("""
+        printSlow("User ID: Salieri\nLogging in...\nLaunching...\n", 50);
+        printSlow(AMADEUS, 1);
+        printSlow("""
                 Nice to meet you, I'm Kurisu Makise, a.k.a. Amadeus.
                 I look forward to working with you.
                 """,10);
@@ -90,7 +91,7 @@ public class Amadeus
      */
     public static void logOff()
     {
-        slowPrint("Goodbye. May our timelines converge once more.\nEl Psy Kongroo\n",30);
+        printSlow("Goodbye. May our timelines converge once more.\nEl Psy Kongroo\n",30);
         System.out.println(DIVIDER);
     }
 

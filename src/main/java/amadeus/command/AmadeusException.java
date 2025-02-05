@@ -4,7 +4,7 @@
  * for creating exceptions with custom error messages.
  */
 
-package userinterface;
+package amadeus.command;
 
 public class AmadeusException extends Exception
 {
