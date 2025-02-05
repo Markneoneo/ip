@@ -5,7 +5,7 @@
  * Subclasses can extend this class to create specific task types (e.g., Deadline, Event, ToDo).
  */
 
-package tasktypes;
+package amadeus.task;
 
 public class Task
 {

@@ -4,7 +4,7 @@
  * to allow flexibility and expansion.
  */
 
-package userinterface;
+package amadeus.command;
 import java.util.*;
 
 /**

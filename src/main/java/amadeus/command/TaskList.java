@@ -5,8 +5,8 @@
  * Tasks are stored in an ArrayList and can be marked as complete or incomplete.
  */
 
-package userinterface;
-import tasktypes.*;
+package amadeus.command;
+import amadeus.task.*;
 import java.util.ArrayList;
 
 public class TaskList
@@ -25,22 +25,24 @@ public class TaskList
     public static void storeDeadline(String input) throws AmadeusException
     {
         String[] parts = input.split(" /by ", 2); // Split into description and date
-        if (parts.length == 2)
+
+        if (parts.length != 2)
         {
-            String name = parts[0].trim();
-            String by = parts[1].trim();
-            Deadline d = new Deadline(name, by);
-
-            int index = 0;
-            while (index < taskList.size() && taskList.get(index) instanceof Deadline) {
-                index++;
-            }
-            taskList.add(index, d); // Insert at the end of the Deadline section
-
-            System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
-        } else {
             throw new AmadeusException("⚠️Invalid deadline format! Use: <description> /by <date>");
         }
+
+        String name = parts[0].trim();
+        String by = parts[1].trim();
+        Deadline d = new Deadline(name, by);
+
+        int index = 0;
+        while (index < taskList.size() && taskList.get(index) instanceof Deadline)
+        {
+            index++;
+        }
+
+        taskList.add(index, d); // Insert at the end of the Deadline section
+        System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
     }
 
     /**
@@ -51,34 +53,46 @@ public class TaskList
      *
      * @param input The user input containing the task description, start time, and end time
      *              (e.g., "project meeting /from Mon 2pm /to 4pm").
-     * @throws AmadeusException If the input format is invalid.
+     * @throws AmadeusException If the input format is invalid or cannot be parsed.
      */
     public static void storeEvent(String input) throws AmadeusException
     {
-        String[] parts = input.split(" /from ", 2); // Split into description and from/to
-        if (parts.length == 2)
+        Event e = getEvent(input);
+
+        int index = 0;
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event))
         {
-            String name = parts[0].trim();
-            String[] fromToParts = parts[1].split(" /to ", 2); // Split into from and to
-            if (fromToParts.length == 2)
-            {
-                String from = fromToParts[0].trim();
-                String to = fromToParts[1].trim();
-                Event e = new Event(name, from, to);
+            index++;
+        }
 
-                int index = 0;
-                while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event)) {
-                    index++;
-                }
-                taskList.add(index, e); // Insert at the end of the Event section
+        taskList.add(index, e); // Insert at the end of the Event section
+        System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
+    }
 
-                System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
-            } else {
-                throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
-            }
-        } else {
+    /**
+     * Parses the input string to create a new Event task.
+     * The input string is expected to contain a description, a start time, and an end time,
+     * separated by "/from" and "/to". If the input format is invalid, an AmadeusException is thrown.
+     *
+     * @param input The user input containing the task description, start time, and end time
+     *              (e.g., "project meeting /from Mon 2pm /to 4pm").
+     * @return A new Event object created from the parsed input.
+     * @throws AmadeusException If the input format is invalid (e.g., missing "/from" or "/to").
+     */
+    private static Event getEvent(String input) throws AmadeusException
+    {
+        String[] parts = input.split(" /from ", 2); // Split into description and from/to
+        String name = parts[0].trim();
+        String[] fromToParts = parts[1].split(" /to ", 2); // Split into from and to
+
+        if (parts.length != 2 || fromToParts.length != 2)
+        {
             throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
         }
+
+        String from = fromToParts[0].trim();
+        String to = fromToParts[1].trim();
+        return new Event(name, from, to);
     }
 
     /**
@@ -93,11 +107,12 @@ public class TaskList
         ToDo td = new ToDo(name);
 
         int index = 0;
-        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo)) {
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo))
+        {
             index++;
         }
-        taskList.add(index, td); // Insert at the end of the ToDo section
 
+        taskList.add(index, td); // Insert at the end of the ToDo section
         System.out.println("✍️Understood! The following ToDo has been stored:\n╰┈➤ " + td);
     }
 
@@ -128,9 +143,11 @@ public class TaskList
     {
         try {
             taskList.get(index - 1).updateDone(status);
+
             System.out.print("✍️Understood, the following task has been set to"
                     + (status ? "〚Complete〛✔️. Well Done!" : "〚Incomplete〛❌. Keep it up!")
                     + "\n╰┈➤ " + index + ". ");
+
             taskList.get(index - 1).printTask();
 
         } catch (IndexOutOfBoundsException e) {
