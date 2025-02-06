@@ -14,6 +14,20 @@ public class TaskList
     // ArrayList to store all tasks, categorized by type (Deadline, Event, ToDo, etc.).
     public static ArrayList<Task> taskList = new ArrayList<>();
 
+    // Load tasks from file when the program starts
+    static
+    {
+        taskList = Database.loadTasks();
+    }
+
+    /**
+     * Saves the task list to the file.
+     */
+    private static void saveTasks()
+    {
+        Database.saveTasks(taskList);
+    }
+
     //region Store Tasks
     /**
      * Adds a new Deadline task to the task list.
@@ -43,6 +57,7 @@ public class TaskList
         }
 
         taskList.add(index, d); // Insert at the end of the Deadline section
+        saveTasks(); // Save to Database
         System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
     }
 
@@ -67,6 +82,7 @@ public class TaskList
         }
 
         taskList.add(index, e); // Insert at the end of the Event section
+        saveTasks(); // Save to Database
         System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
     }
 
@@ -114,6 +130,7 @@ public class TaskList
         }
 
         taskList.add(index, td); // Insert at the end of the ToDo section
+        saveTasks(); // Save to Database
         System.out.println("✍️Understood! The following ToDo has been stored:\n╰┈➤ " + td);
     }
 
@@ -127,6 +144,7 @@ public class TaskList
     {
         Task t = new Task(name);
         taskList.add(t); // Add generic tasks at the end
+        saveTasks(); // Save to Database
         System.out.println("✍️Understood! The following Task has been stored:\n╰┈➤ " + t);
     }
     //endregion
@@ -150,6 +168,7 @@ public class TaskList
                     + "\n╰┈➤ " + index + ". ");
 
             taskList.get(index - 1).printTask();
+            saveTasks(); // Save to Database
 
         } catch (IndexOutOfBoundsException e) {
             throw new AmadeusException("⚠️Task Index not found! Please try again.");
@@ -170,10 +189,21 @@ public class TaskList
 
             System.out.print("🗑️Understood, the following task has been deleted:\n╰┈➤ " + index + ". ");
             removedTask.printTask();
+            saveTasks(); // Save to Database
 
         } catch (IndexOutOfBoundsException e) {
             throw new AmadeusException("⚠️Task Index not found! Please try again.");
         }
+    }
+
+    /**
+     * Resets the task list by deleting all tasks and updating the database file.
+     */
+    public static void resetList()
+    {
+        taskList.clear(); // Clear all tasks from the list
+        saveTasks(); // Update the database file
+        System.out.println("🗑️All tasks have been deleted. The task list is now empty.");
     }
 
     /**

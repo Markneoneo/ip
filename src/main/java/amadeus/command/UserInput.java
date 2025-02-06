@@ -19,6 +19,7 @@ public class UserInput
     public final static String MARK_COMMAND = "mark";
     public final static String UNMARK_COMMAND = "unmark";
     public final static String DELETE_COMMAND = "delete";
+    public final static String RESET_COMMAND = "reset";
     public final static String DEADLINE_COMMAND = "deadline";
     public final static String EVENT_COMMAND = "event";
     public final static String TODO_COMMAND = "todo";
@@ -90,6 +91,11 @@ public class UserInput
             // Shows the user all possible Amadeus commands
             case COMMAND_LIST:
                 Amadeus.showCommands();
+                break;
+
+            // Reset the task lis
+            case RESET_COMMAND:
+                TaskList.resetList();
                 break;
 
             // Exits the command loop and terminates the interaction.

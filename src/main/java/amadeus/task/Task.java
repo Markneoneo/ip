@@ -2,7 +2,7 @@
  * Abstract base class representing a generic task.
  * This class provides the foundational properties and methods for tasks, including
  * a name, completion status, and methods to update and display task details.
- * Subclasses can extend this class to create specific task types (e.g., Deadline, Event, ToDo).
+ * Subclasses can extend this class to create specific task types (e.g., Deadline, Event, ToDo, etc.).
  */
 
 package amadeus.task;
@@ -24,6 +24,18 @@ public class Task
     {
         this.name = input;
         this.isDone = false;
+    }
+
+    /**
+     * Initializes a new Task with the given name and completion status.
+     *
+     * @param input The name or description of the task.
+     * @param done  A boolean indicating whether the task is completed (true) or not (false).
+     */
+    public Task(String input, boolean done)
+    {
+        this.name = input;
+        this.isDone = done;
     }
 
     /**
@@ -74,6 +86,17 @@ public class Task
     public String toString()
     {
         return this.name;
+    }
+
+    /**
+     * Converts the Misc. Task to a file-friendly format.
+     * The format is: `M | <isDone> | <description>`
+     *
+     * @return A string representation of the generic task in a format suitable for saving to a file.
+     */
+    public String toFileFormat()
+    {
+        return "M | " + (isDone ? "1" : "0") + " | " + name;
     }
 
     /**
