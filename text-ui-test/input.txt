@@ -9,8 +9,11 @@ event Team meeting /from 2pm
 event
 Read a book
 mark 1
+mark four
+list
 unmark one
+delete 4
 mark 10 twenty
-mark
+delete
 list
 bye
