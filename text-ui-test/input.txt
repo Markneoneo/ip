@@ -1,4 +1,6 @@
 list
+reset
+list
 todo Buy groceries
 todo
 deadline Submit report /by 2023-10-31
@@ -9,9 +11,10 @@ event Team meeting /from 2pm
 event
 Read a book
 mark 1
-mark four
+mark three
 list
 unmark one
+Read a book
 delete 4
 mark 10 twenty
 delete

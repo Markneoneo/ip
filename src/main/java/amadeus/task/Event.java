@@ -27,6 +27,32 @@ public class Event extends Task
     }
 
     /**
+     * Constructs an Event task with a name, completion status, start time, and end time.
+     *
+     * @param name The name or description of the event.
+     * @param done  A boolean indicating whether the task is completed (true) or not (false).
+     * @param from The start date/time of the event.
+     * @param to   The end date/time of the event.
+     */
+    public Event(String name, boolean done, String from, String to)
+    {
+        super(name, done);
+        this.from = from;
+        this.to = to;
+    }
+
+    /**
+     * Converts the Event task to a file-friendly format.
+     * The format is: `E | <isDone> | <description> | <from> | <to>`
+     *
+     * @return A string representation of the Event task in a format suitable for saving to a file.
+     */
+    @Override
+    public String toFileFormat() {
+        return "E | " + (isDone ? "1" : "0") + " | " + name + " | " + from + " | " + to;
+    }
+
+    /**
      * Returns a string representation of the Event, including its name,
      * start time, and end time.
      *
