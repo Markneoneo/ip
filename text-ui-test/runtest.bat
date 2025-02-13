@@ -5,7 +5,6 @@ if not exist ..\bin mkdir ..\bin
 
 REM delete output from previous run
 if exist FULL_OUTPUT.TXT del FULL_OUTPUT.TXT
-if exist ACTUAL.TXT del ACTUAL.TXT
 if exist SKIP_INTRO.TXT del SKIP_INTRO.TXT
 
 REM compile the code into the bin folder

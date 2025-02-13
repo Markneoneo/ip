@@ -135,7 +135,8 @@ public class UserInput
             case EVENT_COMMAND:
             case TODO_COMMAND:
                 if (argument.isEmpty()) { // Missing Argument
-                    throw new AmadeusException("⚠️Please provide the " + command.toLowerCase() + " task name/description!");
+                    throw new AmadeusException(String.format("⚠️Please provide the \033[1m%s\033[0m task name/description!", command.toLowerCase()));
+                    //throw new AmadeusException("⚠️Please provide the " + command.toLowerCase() + " task name/description!");
                 }
                 switch (command) {
                     case DEADLINE_COMMAND -> TaskList.storeDeadline(argument);

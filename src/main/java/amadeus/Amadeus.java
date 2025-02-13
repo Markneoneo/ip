@@ -57,31 +57,32 @@ public class Amadeus
                 Here are the commands you can use to manage your tasks:
                \s
                 ➤ ✍️ Adding a Task:
-                   ╰┈➤ 'todo 【description】': Adds a new ToDo task.
-                        Eg: "todo Buy groceries"
-                   ╰┈➤ 'deadline 【description】 /by 【date】': Adds a new Deadline task.
-                        Eg: "deadline Submit report /by 2023-10-31"
-                   ╰┈➤ 'event 【description】 /from 【start】 /to 【end】': Adds a new Event task.
-                        Eg: "event Team meeting /from Mon 2pm /to 4pm"
-                   ╰┈➤ '【description】': Adds a generic task.
-                        Eg: "Read a book"
+                   ╰┈➤ \033[1mtodo 【description】\033[0m: Adds a new ToDo task.
+                        Eg: "\033[3mtodo Buy groceries\033[0m"
+                   ╰┈➤ \033[1mdeadline 【description】 /by 【date】\033[0m: Adds a new Deadline task.
+                        Eg: "\033[3mdeadline Submit report /by 2023-10-31\033[0m"
+                   ╰┈➤ \033[1mevent 【description】 /from 【start】 /to 【end】\033[0m: Adds a new Event task.
+                        Eg: "\033[3mevent Team meeting /from Mon 2pm /to 4pm\033[0m"
+                   ╰┈➤ \033[1m【description】\033[0m: Adds a generic task.
+                        Eg: "\033[3mRead a book\033[0m"
                \s
                 ➤ 👀 View Tasks:
-                   ╰┈➤ 'list': Displays all your tasks, organized by type (Deadlines, Events, ToDos, Misc Tasks).
+                   ╰┈➤ \033[1mlist\033[0m: Displays all your saved tasks, organized by type.
                \s
                 ➤ ✔️ Mark Tasks:
-                   ╰┈➤ 'mark 【index】': Marks a task as complete.
-                     Example: "mark 1"
-                   ╰┈➤ 'unmark 【index】': Marks a task as incomplete.
-                     Example: "unmark one"
+                   ╰┈➤ \033[1mmark 【index】\033[0m: Marks a task as complete.
+                     Example: "\033[3mmark 1\033[0m"
+                   ╰┈➤ \033[1munmark 【index】\033[0m: Marks a task as incomplete.
+                     Example: "\033[3munmark one\033[0m"
                \s
                 ➤ 🗑️ Delete Tasks:
-                   ╰┈➤ 'delete 【index】': Deletes a task from the list.
-                     Example: "delete 2"
+                   ╰┈➤ \033[1mdelete 【index】\033[0m: Deletes a task from the list.
+                     Example: "\033[3mdelete 2\033[0m"
+                   ╰┈➤ \033[1mreset\033[0m: Resets and deletes the entire saved list.
                \s
                 ➤ 📴 Exit:
-                   ╰┈➤ 'bye': Exits the application.
-               """;
+                   ╰┈➤ \033[1mbye\033[0m: Exits the application.
+              \s""";
     //endregion
 
     /**
@@ -113,12 +114,12 @@ public class Amadeus
     public static void logIn()
     {
         System.out.println(DIVIDER);
-        printSlow("User ID: Salieri\nLogging in...\nLaunching...\n", 50);
+        printSlow("User ID: \033[1mSalieri\033[0m\n\033[3mLogging in...\033[0m\n\033[3mLaunching...\033[0m\n", 50);
         printSlow(AMADEUS, 1);
         printSlow("""
-                Nice to meet you, I'm Kurisu Makise, a.k.a. Amadeus.
+                Nice to meet you, I'm Kurisu Makise, a.k.a. \033[1mAmadeus\033[0m.
                 I look forward to working with you.
-                Type "commands" to see what I can do!
+                Type "\033[1mcommands\033[0m" to see what I can do!
                 """,10);
         System.out.println(DIVIDER);
     }
@@ -129,7 +130,7 @@ public class Amadeus
      */
     public static void logOff()
     {
-        printSlow("Goodbye. May our timelines converge once more.\nEl Psy Kongroo\n",30);
+        printSlow("Goodbye. May our timelines converge once more.\n\033[1mEl Psy Kongroo\033[0m\n",30);
         System.out.println(DIVIDER);
     }
 
@@ -156,7 +157,8 @@ public class Amadeus
         UserInput.getCommand(); // Start the command loop
         logOff();           // Display the logout sequence
     }
-//    input.txt Test Cases:
+    // \033[1m Text \033[0m >> [1m = Bold >> [3m = Italicize
+    //region input.txt Test Cases
 //    ➤ Empty Task List
 //    ➤ Adding a ToDo Task
 //    ➤ Adding a ToDo with Missing Description
@@ -178,4 +180,5 @@ public class Amadeus
 //    ➤ Missing Task Index (Mark/Unmark)
 //    ➤ Listing All Tasks
 //    ➤ Exiting the Application
+    //endregion
 }
