@@ -43,7 +43,7 @@ public class TaskList
 
         if (parts.length != 2) // Missing Due Date
         {
-            throw new AmadeusException("⚠️Invalid deadline format! Use: <description> /by <date>");
+            throw new AmadeusException("⚠️Invalid \033[1mDeadline\033[0m format! Use: <description> /by <date>");
         }
 
         String name = parts[0].trim();
@@ -58,7 +58,9 @@ public class TaskList
 
         taskList.add(index, d); // Insert at the end of the Deadline section
         saveTasks(); // Save to Database
-        System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
+
+        System.out.printf("✍️Understood! The following \033[1mDeadline\033[0m has been stored:\n╰┈➤ %s%n", d);
+        //System.out.println("✍️Understood! The following Deadline has been stored:\n╰┈➤ " + d);
     }
 
     /**
@@ -83,7 +85,8 @@ public class TaskList
 
         taskList.add(index, e); // Insert at the end of the Event section
         saveTasks(); // Save to Database
-        System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
+        System.out.printf("✍️Understood! The following \033[1mEvent\033[0m has been stored:\n╰┈➤ %s%n", e);
+        //System.out.println("✍️Understood! The following Event has been stored:\n╰┈➤ " + e);
     }
 
     /**
@@ -104,7 +107,7 @@ public class TaskList
 
         if (parts.length != 2 || fromToParts.length != 2) // Missing from/to
         {
-            throw new AmadeusException("⚠️Invalid event format! Use: <description> /from <start> /to <end>");
+            throw new AmadeusException("⚠️Invalid \033[1mEvent\033[0m format! Use: <description> /from <start> /to <end>");
         }
 
         String from = fromToParts[0].trim();
@@ -131,7 +134,8 @@ public class TaskList
 
         taskList.add(index, td); // Insert at the end of the ToDo section
         saveTasks(); // Save to Database
-        System.out.println("✍️Understood! The following ToDo has been stored:\n╰┈➤ " + td);
+        System.out.printf("✍️Understood! The following \033[1mToDo\033[0m has been stored:\n╰┈➤ %s%n", td);
+        //System.out.println("✍️Understood! The following ToDo has been stored:\n╰┈➤ " + td);
     }
 
     /**
@@ -145,7 +149,8 @@ public class TaskList
         Task t = new Task(name);
         taskList.add(t); // Add generic tasks at the end
         saveTasks(); // Save to Database
-        System.out.println("✍️Understood! The following Task has been stored:\n╰┈➤ " + t);
+        System.out.printf("✍️Understood! The following \033[1mTask\033[0m has been stored:\n╰┈➤ %s%n", t);
+        //System.out.println("✍️Understood! The following Task has been stored:\n╰┈➤ " + t);
     }
     //endregion
 
@@ -163,9 +168,8 @@ public class TaskList
         try {
             taskList.get(index - 1).updateDone(status);
 
-            System.out.print("✍️Understood, the following task has been set to"
-                    + (status ? "〚Complete〛✔️. Well Done!" : "〚Incomplete〛❌. Keep it up!")
-                    + "\n╰┈➤ " + index + ". ");
+            System.out.printf("✍️Understood, the following task has been set to %s\n╰┈➤ %d. ",
+                    status ? "\033[1mComplete\033[0m ✔️. Well Done!" : "\033[1mIncomplete\033[0m ❌. Keep it up!", index);
 
             taskList.get(index - 1).printTask();
             saveTasks(); // Save to Database
@@ -187,7 +191,8 @@ public class TaskList
         try {
             Task removedTask = taskList.remove(index - 1); // Remove the task at the specified index
 
-            System.out.print("🗑️Understood, the following task has been deleted:\n╰┈➤ " + index + ". ");
+            System.out.printf("🗑️Understood, the following task has been deleted:\n╰┈➤ %s. ", index);
+            //System.out.print("🗑️Understood, the following task has been deleted:\n╰┈➤ " + index + ". ");
             removedTask.printTask();
             saveTasks(); // Save to Database
 
@@ -217,7 +222,8 @@ public class TaskList
         {
             System.out.println("⚠️There are currently no pending tasks!");
         } else {
-            System.out.println("✍️You currently have 【" + taskList.size() + "】 pending tasks!\n");
+            System.out.printf("✍️You currently have 【%s】 pending tasks!\n\n", taskList.size());
+            //System.out.println("✍️You currently have 【" + taskList.size() + "】 pending tasks!\n");
         }
 
         int index = 0;
@@ -228,25 +234,25 @@ public class TaskList
         {
             if (task instanceof Deadline && !titlePrinted[0])
             {
-                System.out.println("⚠️DEADLINES⚠️");
+                System.out.println("⚠️\033[1mDEADLINES\033[0m⚠️");
                 titlePrinted[0] = true; // Mark Deadlines title as printed
             }
             else if (task instanceof Event && !titlePrinted[1])
             {
                 if (index > 0) { System.out.println(); } // Add a newline before the section
-                System.out.println("\uD83C\uDF38EVENTS\uD83C\uDF38");
+                System.out.println("\uD83C\uDF38\033[1mEVENTS\033[0m\uD83C\uDF38");
                 titlePrinted[1] = true; // Mark Events title as printed
             }
             else if (task instanceof ToDo && !titlePrinted[2])
             {
                 if (index > 0) { System.out.println(); } // Add a newline before the section
-                System.out.println("\uD83D\uDCCBTODO LIST\uD83D\uDCCB");
+                System.out.println("\uD83D\uDCCB\033[1mTODO LIST\033[0m\uD83D\uDCCB");
                 titlePrinted[2] = true; // Mark ToDos title as printed
             }
             else if (!(task instanceof Deadline || task instanceof Event || task instanceof ToDo) && !titlePrinted[3])
             {
                 if (index > 0) { System.out.println(); } // Add a newline before the section
-                System.out.println("\uD83D\uDEE0️MISC TASKS\uD83D\uDEE0️");
+                System.out.println("\uD83D\uDEE0️\033[1mISC TASKS\033[0m\uD83D\uDEE0️");
                 titlePrinted[3] = true; // Mark Misc Tasks title as printed
             }
 
