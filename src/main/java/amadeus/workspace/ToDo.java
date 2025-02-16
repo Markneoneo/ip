@@ -3,7 +3,7 @@
  * Inherits from the {@link Task} class.
  */
 
-package amadeus.task;
+package amadeus.workspace;
 
 public class ToDo extends Task
 {

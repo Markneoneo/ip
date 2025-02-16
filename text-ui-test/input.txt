@@ -10,11 +10,11 @@ event Team meeting /from 2023-10-25 2pm /to 4pm
 event Team meeting /from 2pm
 event
 Read a book
+todo Read some books
 mark 1
 mark three
 list
 unmark one
-Read a book
 delete 4
 mark 10 twenty
 delete

@@ -3,7 +3,7 @@
  * Inherits from the {@link Task} class.
  */
 
-package amadeus.task;
+package amadeus.workspace;
 
 public class Deadline extends Task
 {
@@ -36,17 +36,6 @@ public class Deadline extends Task
     }
 
     /**
-     * Converts the Deadline task to a file-friendly format.
-     * The format is: `D | <isDone> | <description> | <by>`
-     *
-     * @return A string representation of the Deadline task in a format suitable for saving to a file.
-     */
-    @Override
-    public String toFileFormat() {
-        return "D | " + (isDone ? "1" : "0") + " | " + name + " | " + by;
-    }
-
-    /**
      * Returns a string representation of the Deadline, including its name
      * and due date/time.
      *
@@ -56,5 +45,17 @@ public class Deadline extends Task
     public String toString()
     {
         return name + " ⏰Due by:【" + by + "】";
+    }
+
+    /**
+     * Converts the Deadline task to a file-friendly format.
+     * The format is: `D | <isDone> | <description> | <by>`
+     *
+     * @return A string representation of the Deadline task in a format suitable for saving to a file.
+     */
+    @Override
+    public String toFileFormat()
+    {
+        return "D | " + (isDone ? "1" : "0") + " | " + name + " | " + by;
     }
 }
