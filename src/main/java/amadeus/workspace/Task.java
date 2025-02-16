@@ -2,12 +2,12 @@
  * Abstract base class representing a generic task.
  * This class provides the foundational properties and methods for tasks, including
  * a name, completion status, and methods to update and display task details.
- * Subclasses can extend this class to create specific task types (e.g., Deadline, Event, ToDo, etc.).
+ * Subclasses can extend this class to create specific task types (Deadline, Event, ToDo).
  */
 
-package amadeus.task;
+package amadeus.workspace;
 
-public class Task
+public abstract class Task
 {
     // The name or description of the task.
     protected String name;
@@ -39,36 +39,6 @@ public class Task
     }
 
     /**
-     * Updates the name or description of the task.
-     *
-     * @param input The new name or description for the task.
-     */
-    public void setName(String input)
-    {
-        this.name = input;
-    }
-
-    /**
-     * Retrieves the name or description of the task.
-     *
-     * @return The name or description of the task as a String.
-     */
-    public String getName()
-    {
-        return this.name;
-    }
-
-    /**
-     * Checks whether the task is marked as complete.
-     *
-     * @return True if the task is complete, false if it is incomplete.
-     */
-    public boolean getDone()
-    {
-        return isDone;
-    }
-
-    /**
      * Updates the completion status of the task.
      *
      * @param status The new completion status (true for complete, false for incomplete).
@@ -89,17 +59,6 @@ public class Task
     }
 
     /**
-     * Converts the Misc. Task to a file-friendly format.
-     * The format is: `M | <isDone> | <description>`
-     *
-     * @return A string representation of the generic task in a format suitable for saving to a file.
-     */
-    public String toFileFormat()
-    {
-        return "M | " + (isDone ? "1" : "0") + " | " + name;
-    }
-
-    /**
      * Prints the task's name and completion status to the console.
      * If the task is complete, a checkmark (✔️) is displayed next to the name.
      */
@@ -107,4 +66,12 @@ public class Task
     {
         System.out.print(this + (isDone ? " ✔️" : "") + "\n");
     }
+
+    /**
+     * Converts the task to a file-friendly format.
+     * Subclasses must implement this method.
+     *
+     * @return A string representation of the task in a format suitable for saving to a file.
+     */
+    public abstract String toFileFormat();
 }

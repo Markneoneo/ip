@@ -4,7 +4,7 @@
  * to allow flexibility and expansion.
  */
 
-package amadeus.command;
+package amadeus.perception;
 import java.util.*;
 
 /**
@@ -93,6 +93,25 @@ public class NumberConverter
             }
         }
         return result + current;
+    }
+
+    /**
+     * Extracts a task index from the provided argument.
+     * The argument can be either a numeric string (e.g., "1") or a word representing a number (e.g., "one").
+     * If the argument is invalid or cannot be converted to a number, -1 is returned.
+     *
+     * @param argument The string containing the task index (numeric or word format).
+     * @return The task index as an integer, or -1 if the argument is invalid.
+     */
+    public static int extractIndex(String argument)
+    {
+        try {
+            // Try parsing the argument as a number directly
+            return Integer.parseInt(argument);
+        } catch (NumberFormatException e) {
+            // If parsing fails, try converting words to a number
+            return NumberConverter.wordToNumber(argument);
+        }
     }
 
     public static void main(String[] args) {
