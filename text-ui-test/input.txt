@@ -40,6 +40,8 @@ delete
 delete hundred
 Read a book
 list
+find meeting
+find
 check
 check before
 check this out
