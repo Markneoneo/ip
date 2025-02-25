@@ -6,12 +6,16 @@
 package amadeus.cognition;
 
 import amadeus.brain.AmadeusException;
+import amadeus.perception.DateConverter;
 import amadeus.workspace.Event;
 import amadeus.workspace.TaskList;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class EventCommand extends Command
 {
-    Event e;
+    private final Event e;
 
     /**
      * Constructs a new `EventCommand` by parsing the user input.
@@ -29,6 +33,13 @@ public class EventCommand extends Command
             throw AmadeusException.missingArgument("EVENT");
         }
 
+        // Check if "/from" and "/to" exist before splitting
+        if (!input.contains(" /from ") || !input.contains(" /to "))
+        {
+            // Invalid Event Format Exception
+            throw AmadeusException.invalidEvent();
+        }
+
         // Split the input into description and from/to
         String[] parts = input.split(" /from ", 2);
         String name = parts[0].trim();
@@ -36,16 +47,30 @@ public class EventCommand extends Command
         // Split the from/to part into start and end times
         String[] fromToParts = parts[1].split(" /to ", 2);
 
-        // Check if the input is in the correct format
-        if (parts.length != 2 || fromToParts.length != 2) // Missing from/to
+        // Parse the start and end times into LocalDateTime objects
+        Object from = DateConverter.parseDate(fromToParts[0].trim());
+        Object to = DateConverter.parseDate(fromToParts[1].trim());
+
+        // Ensure that from is strictly before to
+        if (from instanceof LocalDateTime && to instanceof LocalDateTime)
         {
-            // Invalid Event Format Exception
+            if (!((LocalDateTime) from).isBefore((LocalDateTime) to))
+            {
+                throw AmadeusException.invalidEventTime();
+            }
+        }
+        else if (from instanceof LocalDate && to instanceof LocalDate)
+        {
+            if (!((LocalDate) from).isBefore((LocalDate) to))
+            {
+                throw AmadeusException.invalidEventTime();
+            }
+        } else {
+            // Handle case where types don't match
             throw AmadeusException.invalidEvent();
         }
 
         // Create a new Event task
-        String from = fromToParts[0].trim();
-        String to = fromToParts[1].trim();
         e = new Event(name, from, to);
     }
 
