@@ -14,6 +14,7 @@ public abstract class Task
     // The completion status of the task (true if complete, false if incomplete).
     protected boolean isDone;
 
+
     /**
      * Initializes a new Task with the given name.
      * The task is marked as incomplete by default.
@@ -25,6 +26,7 @@ public abstract class Task
         this.name = input;
         this.isDone = false;
     }
+
 
     /**
      * Initializes a new Task with the given name and completion status.
@@ -38,6 +40,13 @@ public abstract class Task
         this.isDone = done;
     }
 
+
+    public String getName()
+    {
+        return name;
+    }
+
+
     /**
      * Updates the completion status of the task.
      *
@@ -47,6 +56,7 @@ public abstract class Task
     {
         this.isDone = status;
     }
+
 
     /**
      * Returns a string representation of the task, which is its name.
@@ -58,6 +68,7 @@ public abstract class Task
         return this.name;
     }
 
+
     /**
      * Prints the task's name and completion status to the console.
      * If the task is complete, a checkmark (✔️) is displayed next to the name.
@@ -66,6 +77,7 @@ public abstract class Task
     {
         System.out.print(this + (isDone ? " ✔️" : "") + "\n");
     }
+
 
     /**
      * Converts the task to a file-friendly format.

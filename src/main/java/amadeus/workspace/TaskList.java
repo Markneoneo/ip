@@ -34,6 +34,17 @@ public class TaskList
     }
 
 
+    /**
+     * Returns the current saved Task List
+     *
+     * @return The current saved Task List
+     */
+    public static ArrayList<Task> getTaskList()
+    {
+        return taskList;
+    }
+
+
     //region Add Tasks to List
     /**
      * Adds a new Deadline task to the task list.
