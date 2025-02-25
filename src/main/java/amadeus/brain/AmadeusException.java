@@ -48,7 +48,7 @@ public class AmadeusException extends Exception
      * @return An AmadeusException with a message explaining the correct deadline format.
      */
     public static AmadeusException invalidDeadline() {
-        return new AmadeusException("⚠️ Invalid \033[1mDEADLINE\033[0m format! Use: <description> /by <date>");
+        return new AmadeusException("⚠️ Invalid \033[1mDEADLINE\033[0m format! Use: <description> /by <date/time>");
     }
 
     /**
@@ -58,11 +58,32 @@ public class AmadeusException extends Exception
      * @return An AmadeusException with a message explaining the correct event format.
      */
     public static AmadeusException invalidEvent() {
-        return new AmadeusException("⚠️ Invalid \033[1mEVENT\033[0m format! Use: <description> /from <start> /to <end>");
+        return new AmadeusException("⚠️ Invalid \033[1mEVENT\033[0m format! Use: <description> /from <start date/time> /to <end date/time>");
+    }
+
+    /**
+     * Creates an exception for invalid event time formats.
+     * This is thrown when the user enters an event task in an incorrect time format.
+     * Start time is ahead of End time.
+     *
+     * @return An AmadeusException with a message explaining the correct event format.
+     */
+    public static AmadeusException invalidEventTime() {
+        return new AmadeusException("⚠️ Invalid \033[1mEVENT\033[0m Start & End Date/Time! Make sure they are in chronological order.");
+    }
+
+    /**
+     * Creates an exception for invalid checking formats.
+     * This is thrown when the user enters a check command in an incorrect format.
+     *
+     * @return An AmadeusException with a message explaining the correct checking format.
+     */
+    public static AmadeusException invalidCheck() {
+        return new AmadeusException("⚠️ Invalid \033[1mCHECK\033[0m format! Use: check (Optional: before/after) <date/time>");
     }
     //endregion
 
-    //region Index Number Exceptions
+    //region Index & Date Number Exceptions
     /**
      * Creates an exception for missing task indices.
      * This is thrown when the user does not provide an index for commands like `mark`, `unmark`, or `delete`.
@@ -91,6 +112,21 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidIndex() {
         return new AmadeusException("⚠️ Task Index not found on the list! Please try again.");
+    }
+
+    /**
+     * Creates an exception for invalid date formats.
+     * This is thrown when the user provides a date that is not in the valid format.
+     *
+     * @return An AmadeusException with a message prompting the user to provide a valid date.
+     */
+    public static AmadeusException invalidDate() {
+        return new AmadeusException("""
+                ⚠️ Invalid date format! Please enter the date and time in one of the following formats:
+                
+                Date only: 2/12/2019, 2-12-2019, 2 12 2019
+                Date & time (24-hour): Date 18:00, Date 1800, Date 18.00
+                Date & time (12-hour): Date 6:00PM, Date 6pm, Date 6.30AM""");
     }
     //endregion
 

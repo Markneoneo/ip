@@ -17,6 +17,7 @@ public class Parser
     public final static String BYE_COMMAND = "bye";
     public final static String COMMAND_LIST = "commands";
     public final static String LIST_COMMAND = "list";
+    public final static String CHECK_COMMAND = "check";
     public final static String MARK_COMMAND = "mark";
     public final static String UNMARK_COMMAND = "unmark";
     public final static String DELETE_COMMAND = "delete";
@@ -52,6 +53,9 @@ public class Parser
 
             // Displays the current list of tasks to the user
             case LIST_COMMAND -> new ListCommand();
+
+            // Print tasks occurring on / before / after a specific date.
+            case CHECK_COMMAND -> new CheckCommand(argument);
 
             // Resets and Clears the saved Task List
             case RESET_COMMAND -> new ResetCommand();

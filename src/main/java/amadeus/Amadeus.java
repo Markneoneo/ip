@@ -72,31 +72,4 @@ public class Amadeus
     {
         awaken();
     }
-
-// region Sample Test Cases (for input.txt testing)
-// These test cases represent different user interactions with the chatbot.
-//
-// ➤ Empty Task List                            - Verify behavior with no tasks
-// ➤ Adding a ToDo Task                         - Ensure ToDo tasks are added correctly
-// ➤ Adding a ToDo with Missing Description     - Check error handling for missing input
-//
-// ➤ Adding a Deadline Task                     - Test adding a deadline task
-// ➤ Invalid Deadline Format                    - Ensure error handling for wrong format
-// ➤ Adding a Deadline with Missing Description - Validate missing input scenario
-//
-// ➤ Adding an Event Task                       - Test adding an event task
-// ➤ Invalid Event Format                       - Ensure error handling for wrong format
-// ➤ Adding an Event with Missing Description   - Validate missing input scenario
-//
-// ➤ Adding a Generic Task                      - Check for handling of generic task additions
-// ➤ Marking a Task as Complete                 - Verify marking functionality
-// ➤ Marking a Task as Complete (Non-Numeric)   - Ensure error handling for invalid input
-// ➤ Marking a Task as Incomplete (Non-Numeric) - Validate incorrect unmarking input
-// ➤ Deleting a Task                            - Test task deletion
-// ➤ Invalid Task Index (Mark/Unmark)           - Ensure proper handling of out-of-range indexes
-// ➤ Missing Task Index (Mark/Unmark)           - Validate missing index scenario
-// ➤ Listing All Tasks                          - Check if task list is displayed correctly
-// ➤ Exiting the Application                    - Ensure the chatbot terminates correctly
-// endregion
-
 }
