@@ -74,29 +74,41 @@ public class Speech
                 ➤ ✍️ Adding a Task:
                    ╰┈➤ \033[1mtodo 【description】\033[0m: Adds a new ToDo task.
                         Eg: "\033[3mtodo Buy groceries\033[0m"
-                   ╰┈➤ \033[1mdeadline 【description】 /by 【date】\033[0m: Adds a new Deadline task.
-                        Eg: "\033[3mdeadline Submit report /by 2023-10-31\033[0m"
-                   ╰┈➤ \033[1mevent 【description】 /from 【start】 /to 【end】\033[0m: Adds a new Event task.
-                        Eg: "\033[3mevent Team meeting /from Mon 2pm /to 4pm\033[0m"
-                   ╰┈➤ \033[1m【description】\033[0m: Adds a generic task.
-                        Eg: "\033[3mRead a book\033[0m"
+                   ╰┈➤ \033[1mdeadline 【description】 /by 【date/time】\033[0m: Adds a new Deadline task.
+                        Eg: "\033[3mdeadline Submit report /by 31/12/2025\033[0m"
+                   ╰┈➤ \033[1mevent 【description】 /from 【start date/time】 /to 【end date/time】\033[0m: Adds a new Event task.
+                        Eg: "\033[3mevent Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm\033[0m"
                \s
                 ➤ 👀 View Tasks:
                    ╰┈➤ \033[1mlist\033[0m: Displays all your saved tasks, organized by type.
+                   ╰┈➤ \033[1mcheck 【date/time】\033[0m: Lists tasks on a specified date/time.
+                        Eg: "\033[3mcheck 2/10/2025\033[0m"
+                   ╰┈➤ \033[1mcheck before 【date/time】\033[0m: Lists tasks before a specified date/time (inclusive).
+                        Eg: "\033[3mcheck before 2/10/2025 6am\033[0m"
+                   ╰┈➤ \033[1mcheck after 【date/time】\033[0m: Lists tasks after a specified date/time (inclusive).
+                        Eg: "\033[3mcheck after 2/10/2025 2359\033[0m"
                \s
                 ➤ ✔️ Mark Tasks:
                    ╰┈➤ \033[1mmark 【index】\033[0m: Marks a task as complete.
-                     Example: "\033[3mmark 1\033[0m"
+                        Eg: "\033[3mmark 1\033[0m"
                    ╰┈➤ \033[1munmark 【index】\033[0m: Marks a task as incomplete.
-                     Example: "\033[3munmark one\033[0m"
+                        Eg: "\033[3munmark 1\033[0m"
                \s
                 ➤ 🗑️ Delete Tasks:
                    ╰┈➤ \033[1mdelete 【index】\033[0m: Deletes a task from the list.
-                     Example: "\033[3mdelete 2\033[0m"
+                        Eg: "\033[3mdelete 2\033[0m"
                    ╰┈➤ \033[1mreset\033[0m: Resets and deletes the entire saved list.
                \s
                 ➤ 📴 Exit:
                    ╰┈➤ \033[1mbye\033[0m: Exits the application.
+               \s
+                ➤ ℹ️ Formating Notice:
+                   ╰┈➤ \033[1mIndex Numbers\033[0m: I am able to parse both words and integers.
+                        Eg: "\033[3mmark one, delete thirteen\033[0m"
+                   ╰┈➤ \033[1mDate Format\033[0m: I am strictly only allowing dd/mm/yyyy format. Sorry Americans!
+                        Eg: "\033[3m31/12/2025, 31-12-2025, 31 12 2025\033[0m"
+                   ╰┈➤ \033[1mTime Format\033[0m: I am able to parse both 12 (AM/PM) & 24 Hour formats.
+                        Eg: "\033[3m12am, 11:59pm, 11.59pm, 2359, 23:59, 23.59\033[0m"
               \s""";
     //endregion\
 

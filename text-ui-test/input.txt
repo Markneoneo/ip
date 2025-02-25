@@ -3,22 +3,52 @@ reset
 list
 todo Buy groceries
 todo
-deadline Submit report /by 2023-10-31
-deadline Submit report
+todo Read a book
+deadline Submit report /by 31/12/2025
+deadline Submit report /by 31/12/2025 0900
+deadline Submit report /by 31-12-2025 9.00AM
+deadline Submit report /by 31 12 2025 9am
 deadline
-event Team meeting /from 2023-10-25 2pm /to 4pm
-event Team meeting /from 2pm
+deadline Submit report
+deadline Submit report /by 31/12/2025 12:60
+deadline leap year /by 29/2/2024
+deadline non-leap year /by 29/2/2023
+deadline midnight /by 31/12/2025 12:00AM
+deadline noon /by 31/12/2025 12:00PM
+event Team meeting /from 30/12/2025 /to 31-12-2025
+event Team meeting /from 31/12/2025 1400 /to 31 12 2025 16:00
+event Team meeting /from 31-12-2025 14.00 /to 31/12/2025 4pm
+event Team meeting /from 31 12 2025 2:00PM /to 31-12-2025 4.00pm
 event
-Read a book
-todo Read some books
-mark 1
-mark three
+event Team meeting
+event Team meeting /from 31/12/2025 /to 30/12/2025
+event Team meeting /from 12/30/2025 /to 12/31/2025
+event Team meeting /from 30/12/2025 /to 31/12/2025 12pm
 list
-unmark one
-delete 4
+mark 1
+mark nine
+mark thirteen
+list
+unmark 1
+unmark nine
+mark
+unmark
 mark 10 twenty
+unmark three 100
+delete 14
 delete
+delete hundred
+Read a book
 list
 find meeting
 find
+check
+check before
+check this out
+check 31 12 2025
+check 31/12/2025 9:00AM
+check before 31-12-2025
+check before 31/12/2025 12pm
+check after 31 12 2025
+check after 31-12-2025 1200
 bye

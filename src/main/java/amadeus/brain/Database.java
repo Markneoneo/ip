@@ -5,6 +5,7 @@
  */
 
 package amadeus.brain;
+import amadeus.perception.DateConverter;
 import amadeus.workspace.Deadline;
 import amadeus.workspace.Event;
 import amadeus.workspace.Task;
@@ -79,12 +80,14 @@ public class Database
             switch (type)
             {
                 case "D": // Deadline
-                    String by = parts[3]; // Due date
+                    // Parse the due date into a LocalDateTime object
+                    Object by = DateConverter.parseDate(parts[3].trim());
                     return new Deadline(description, isDone, by);
 
                 case "E": // Event
-                    String from = parts[3]; // Start time
-                    String to = parts[4]; // End time
+                    // Parse the start and end times into LocalDateTime objects
+                    Object from = DateConverter.parseDate(parts[3].trim());
+                    Object to = DateConverter.parseDate(parts[4].trim());
                     return new Event(description, isDone, from, to);
 
                 case "T": // ToDo
