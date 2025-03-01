@@ -1,8 +1,3 @@
-/**
- * Command to add a new Deadline task to the task list.
- * This command parses the user input to create a Deadline task and adds it to the list.
- */
-
 package amadeus.cognition;
 
 import amadeus.brain.AmadeusException;
@@ -10,16 +5,26 @@ import amadeus.perception.DateConverter;
 import amadeus.workspace.Deadline;
 import amadeus.workspace.TaskList;
 
+/**
+ * Command to add a new {@link amadeus.workspace.Deadline} task to the task list.
+ * <p>
+ * This command parses the user input to create a {@link amadeus.workspace.Deadline} task and adds it to the list.
+ * The input is expected to contain a description and a due date, separated by {@code /by}.
+ * </p>
+ */
 public class DeadlineCommand extends Command
 {
     Deadline d;
 
     /**
-     * Constructs a new `DeadlineCommand` by parsing the user input.
-     * The input is expected to contain a description and a due date, separated by "/by".
+     * Constructs a new {@code DeadlineCommand} by parsing the user input.
+     * <p>
+     * The input is expected to contain a description and a due date, separated by {@code /by}.
+     * If the input is empty or in an invalid format, an {@link amadeus.brain.AmadeusException} is thrown.
+     * </p>
      *
-     * @param input The user input containing the task description and due date.
-     * @throws AmadeusException If the input is empty or in an invalid format.
+     * @param input the user input containing the task description and due date; must not be {@code null} or empty.
+     * @throws AmadeusException if the input is empty or in an invalid format.
      */
     public DeadlineCommand(String input) throws AmadeusException
     {
@@ -48,9 +53,9 @@ public class DeadlineCommand extends Command
     }
 
     /**
-     * Executes the command by adding the Deadline task to the task list.
+     * Executes the command by adding the {@link amadeus.workspace.Deadline} task to the task list.
      *
-     * @throws AmadeusException If an error occurs while adding the task.
+     * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
     public void execute() throws AmadeusException

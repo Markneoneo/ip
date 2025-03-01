@@ -1,4 +1,5 @@
 package amadeus.perception;
+
 import amadeus.brain.AmadeusException;
 
 import java.time.LocalDate;
@@ -8,6 +9,14 @@ import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A utility class for parsing and formatting dates and date-times.
+ * <p>
+ * This class supports multiple date and time formats, allowing flexible input from users.
+ * It can parse strings into {@link java.time.LocalDate} or {@link java.time.LocalDateTime} objects
+ * and format these objects into user-friendly strings.
+ * </p>
+ */
 public class DateConverter
 {
     // Supported date formats
@@ -47,11 +56,15 @@ public class DateConverter
 
 
     /**
-     * Parses a date string into a LocalDate or LocalDateTime object.
-     * Supports multiple date and time formats.
+     * Parses a date string into a {@link java.time.LocalDate} or {@link java.time.LocalDateTime} object.
+     * <p>
+     * Supports multiple date and time formats. If the input string does not match any supported format,
+     * an {@link amadeus.brain.AmadeusException} is thrown.
+     * </p>
      *
-     * @param dateString The date string to parse.
-     * @return A LocalDate or LocalDateTime object, or null if the input is invalid.
+     * @param dateString the date string to parse; must not be {@code null}.
+     * @return a {@link java.time.LocalDate} or {@link java.time.LocalDateTime} object.
+     * @throws AmadeusException if the input string cannot be parsed into a valid date or date-time.
      */
     public static Object parseDate(String dateString) throws AmadeusException
     {
@@ -88,8 +101,8 @@ public class DateConverter
     /**
      * Formats a date or date-time object into a user-friendly string.
      *
-     * @param date The date or date-time object to format.
-     * @return The formatted date string (e.g., "Oct 15 2019" or "Oct 15 2019, 6:00PM").
+     * @param date the date or date-time object to format; must not be {@code null}.
+     * @return the formatted date string (e.g., "Oct 15 2019" or "Oct 15 2019, 6:00PM").
      */
     public static String formatDate(Object date)
     {
@@ -105,6 +118,11 @@ public class DateConverter
     }
 
 
+    /**
+     * Main method for testing the {@link DateConverter} class.
+     *
+     * @param args command-line arguments (not used).
+     */
     public static void main(String[] args)
     {
         //create dates from strings

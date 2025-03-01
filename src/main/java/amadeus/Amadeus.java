@@ -1,16 +1,27 @@
-/**
- * The Amadeus class serves as the main entry point for the Amadeus chatbot system.
- * It handles user input, processes commands, and manages the execution flow.
- * The chatbot remains active in a loop until the exit command is received.
- */
-
 package amadeus;
+
 import amadeus.brain.AmadeusException;
 import amadeus.cognition.Command;
 import amadeus.perception.Parser;
 import amadeus.personality.Speech;
+
 import java.util.Scanner;
 
+/**
+ * The main entry point for the Amadeus chatbot system.
+ * <p>
+ * This class handles user input, processes commands, and manages the execution flow of the chatbot.
+ * It initializes the interaction loop, continuously listens for user commands, and executes the
+ * corresponding actions until the exit command is received.
+ * </p>
+ * <p>
+ * The chatbot uses the following components:
+ * <ul>
+ *   <li>{@link amadeus.personality.Speech}: For user interaction and displaying messages.</li>
+ *   <li>{@link amadeus.perception.Parser}: For parsing user input into executable commands.</li>
+ *   <li>{@link amadeus.cognition.Command}: For executing the parsed commands.</li>
+ * </ul>
+ */
 public class Amadeus
 {
     /**
@@ -25,8 +36,19 @@ public class Amadeus
 
     /**
      * Awakens the Amadeus chatbot, initializing the interaction loop.
-     * The chatbot continuously listens for user commands, processes them,
-     * and executes the corresponding actions until the exit command is received.
+     * <p>
+     * This method displays a welcome message and continuously listens for user commands.
+     * Each command is parsed and executed until the exit command is received. Errors during
+     * command execution are caught and displayed to the user.
+     * </p>
+     * <p>
+     * The interaction loop includes the following steps:
+     * <ol>
+     *   <li>Read user input from the console.</li>
+     *   <li>Parse the input into a {@link amadeus.cognition.Command} object.</li>
+     *   <li>Execute the command.</li>
+     *   <li>Check if the command is an exit command.</li>
+     * </ol>
      */
     public static void awaken()
     {
@@ -64,9 +86,11 @@ public class Amadeus
 
     /**
      * The main method that serves as the program's entry point.
-     * It starts the chatbot by calling the awaken() method.
+     * <p>
+     * This method starts the chatbot by calling the {@link #awaken()} method.
+     * </p>
      *
-     * @param args Command-line arguments (not used in this application).
+     * @param args command-line arguments (not used in this application).
      */
     public static void main(String[] args)
     {

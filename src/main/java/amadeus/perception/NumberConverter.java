@@ -1,18 +1,14 @@
-/**
- * A utility class for converting written number words into their numeric equivalents.
- * This implementation follows a rule-based approach without relying on a hash map
- * to allow flexibility and expansion.
- */
-
 package amadeus.perception;
+
 import java.util.*;
 
 /**
- * Implements rule-based number conversion from words to integers.
- * Handles numbers up to the thousands.
- * Supports numbers with hyphens (e.g., "twenty-one") by replacing hyphens with spaces.
- * Ignores the word "and" for better parsing.
- * Ensures incorrect inputs return -1 as an error indicator.
+ * A utility class for converting written number words into their numeric equivalents.
+ * <p>
+ * This implementation follows a rule-based approach without relying on a hash map
+ * to allow flexibility and expansion. It supports numbers up to the thousands and
+ * handles compound numbers like "twenty-one" or "three hundred and five."
+ * </p>
  */
 public class NumberConverter
 {
@@ -47,13 +43,15 @@ public class NumberConverter
 
     /**
      * Converts a number written in words into its integer representation.
+     * <p>
      * Supports numbers from "one" to "nine thousand nine hundred ninety-nine."
      * Handles compound numbers like "twenty-one" or "three hundred and five."
      * Ignores the word "and" for natural language compatibility.
      * Returns -1 if input is invalid or contains unrecognized words.
+     * </p>
      *
-     * @param input The number written in words (e.g., "two hundred forty-five").
-     * @return The integer representation of the input word, or -1 for invalid input.
+     * @param input the number written in words (e.g., "two hundred forty-five"); must not be {@code null}.
+     * @return the integer representation of the input word, or -1 for invalid input.
      */
     public static int wordToNumber(String input)
     {
@@ -97,11 +95,13 @@ public class NumberConverter
 
     /**
      * Extracts a task index from the provided argument.
+     * <p>
      * The argument can be either a numeric string (e.g., "1") or a word representing a number (e.g., "one").
      * If the argument is invalid or cannot be converted to a number, -1 is returned.
+     * </p>
      *
-     * @param argument The string containing the task index (numeric or word format).
-     * @return The task index as an integer, or -1 if the argument is invalid.
+     * @param argument the string containing the task index (numeric or word format); must not be {@code null}.
+     * @return the task index as an integer, or -1 if the argument is invalid.
      */
     public static int extractIndex(String argument)
     {
@@ -114,6 +114,12 @@ public class NumberConverter
         }
     }
 
+
+    /**
+     * Main method for testing the {@link NumberConverter} class.
+     *
+     * @param args command-line arguments (not used).
+     */
     public static void main(String[] args) {
         // Test Cases
         System.out.println(wordToNumber("two hundred and forty-five")); // 245

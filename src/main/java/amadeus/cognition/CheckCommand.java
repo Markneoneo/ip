@@ -10,12 +10,29 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * Command to filter tasks based on a date or date range.
+ * <p>
+ * This command parses the user input to identify a date or date range (e.g., "before", "after", or exact date)
+ * and filters tasks that match the specified condition.
+ * </p>
+ */
 public class CheckCommand extends Command
 {
     ArrayList<Task> filteredTasks = new ArrayList<>(); // List of filtered Tasks based on date
     String preposition = "on"; // on, before or after
     String formattedDate; // String of date inquiry
 
+    /**
+     * Constructs a new {@code CheckCommand} by parsing the user input for the date or date range.
+     * <p>
+     * The input is expected to contain a valid date or date range (e.g., "before 31/12/2025").
+     * If the input is empty or invalid, an {@link amadeus.brain.AmadeusException} is thrown.
+     * </p>
+     *
+     * @param argument the user input containing the date or date range; must not be {@code null} or empty.
+     * @throws AmadeusException if the input is empty or invalid.
+     */
     public CheckCommand(String argument) throws AmadeusException
     {
         // Check if the input is empty
@@ -92,7 +109,11 @@ public class CheckCommand extends Command
 
 
     /**
-     * Executes the command by printing the desired filtered Task List
+     * Executes the command by displaying the filtered tasks.
+     * <p>
+     * If no tasks match the specified date or date range, a message is displayed to inform the user.
+     * Otherwise, the matching tasks are displayed using {@link amadeus.personality.Speech#sayList(java.util.ArrayList)}.
+     * </p>
      */
     @Override
     public void execute()
@@ -100,9 +121,9 @@ public class CheckCommand extends Command
         // Display the filtered tasks
         if (filteredTasks.isEmpty())
         {
-            System.out.printf("⚠️ No tasks found occurring %s %s!\n", preposition, formattedDate);
+            System.out.printf("⚠️ No tasks found occurring \033[1m%s\033[0m \033[4m%s\033[0m!\n", preposition, formattedDate);
         } else {
-            System.out.printf("✍️ These are the Tasks occurring %s %s:\n", preposition, formattedDate);
+            System.out.printf("✍️ These are the Tasks occurring \033[1m%s\033[0m \033[4m%s\033[0m:\n", preposition, formattedDate);
             Speech.sayList(filteredTasks);
         }
     }
@@ -111,9 +132,9 @@ public class CheckCommand extends Command
     /**
      * Checks if a task's date/time matches the check date/time based on the rules.
      *
-     * @param taskDateTime The task's date/time.
-     * @param checkDateTime The check date/time.
-     * @return True if the task should be included based on the check conditions.
+     * @param taskDateTime the task's date/time.
+     * @param checkDateTime the check date/time.
+     * @return {@code true} if the task should be included based on the check conditions.
      */
     private boolean isExactMatch(LocalDateTime taskDateTime, LocalDateTime checkDateTime)
     {
@@ -146,8 +167,8 @@ public class CheckCommand extends Command
     /**
      * Extracts the date and time from a task.
      *
-     * @param task The task to extract the date and time from.
-     * @return The date and time of the task, or null if the task has no date.
+     * @param task the task to extract the date and time from.
+     * @return the date and time of the task, or {@code null} if the task has no date.
      */
     private LocalDateTime getTaskDateTime(Task task)
     {
