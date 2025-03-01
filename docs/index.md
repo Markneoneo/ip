@@ -1,8 +1,13 @@
+---
+layout: default
+title: Home
+---
+
 # User Guide for **Amadeus Task Manager**
 
 Welcome to **Amadeus Task Manager**, your personal assistant for managing tasks efficiently! Amadeus helps you keep track of your to-dos, deadlines, and events, ensuring you stay organized and productive.
 
-### [View Javadocs](javadoc/index.html)
+# [View Javadocs](javadoc/index.html)
 
 ---
 
