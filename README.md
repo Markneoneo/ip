@@ -1,26 +1,120 @@
-# Duke project template
+# Amadeus Task Manager
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+**Greetings, I'm Makise Kurisu, also known as Amadeus.**  
+I’m your personal assistant for managing tasks, deadlines, and events. Whether you’re a busy scientist or just someone trying to stay organized, I’m here to help you keep track of everything. Let’s make this timeline a productive one!
 
-## Setting up in Intellij
+```
+                                                                             @
+                                                                          @@@@
+                                                                        @@@@@@
+                                                                     @@@@@@#@@
+                                                                   @@@@@@@@@@@
+                                                                 @@@@@@@  @@@@
+                                                              @@@@@@@:    @@@@
+                                                            @@@@@@@       @@@@
+                                                         -@@@@@@#         @@@@
+                                                       @@@@@@@            @@@@
+                                                     @@@@@@@              @@@@
+                                                   @@@@@@=                @@@@
+                                                @@@@@@@                   @@@@
+                                             +@@@@@@=                     @@@@
+                                           @@@@@@@                        @@@@
+                                         @@@@@@@                          @@@@
+                                       @@@@@@#                            @@@@
+                                    @@@@@@@+                              @@@@
+                                 @@@@@@@#        @@@@@@@@@@@@@@@@@@@@@@@  @@@@
+                               @%#@*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@=@@@@@@@@@@@@@@@@@#-
+                             #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=+         @@ @@@@@@@@@@@@@@@@%@@@@@@@@
+                           @@%@@@@                                     @@                       @@@
+                        @@@@@@@@ @@@@@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
+                      @@@#@@@    @@@   @@    @@@         @@@ @@#       @@ @@       @@@ @@       @@@ @@
+                   @@@@@@@@      @@@   @@    @@@ @@@@@@@@@@@ @@@       @@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
+                 @@@@@@@         @@@   #@    @@@ @@       @@ @@@       @@ @@           @@       @@%          @@
+               @@@@@@@@@@@@@@@@@@@@@   @@    @@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@
+                                             @@-                                         @@@@@@@
+                                             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                                                                             @@@@@@@+
+                                                                            @@@@@@-
+                                                                           @@@@@@
+                                                                          @@@@@
+                                                                          @@@
+                                                                          @
+```
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+---
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
+## What I Can Do
+
+I’m designed to help you manage your tasks efficiently. Here’s what I can do for you:
+
+- **Add Tasks**: Keep track of your to-dos, deadlines, and events.
+- **View Tasks**: See all your tasks at a glance or search for specific ones.
+- **Mark Tasks**: Mark tasks as complete or incomplete.
+- **Delete Tasks**: Remove tasks you no longer need.
+- **Reset Tasks**: Clear your entire task list if you want a fresh start.
+
+---
+
+## How to Use Me
+
+Using me is simple! Just type commands to add, view, or manage your tasks. Here are some examples:
+
+- Add a to-do:  
+  ```
+  todo Buy groceries
+  ```
+
+- Add a deadline:  
+  ```
+  deadline Submit report /by 31/12/2025
+  ```
+
+- Add an event:  
+  ```
+  event Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm
+  ```
+
+- View all tasks:  
+  ```
+  list
+  ```
+
+- Mark a task as complete:  
+  ```
+  mark 1
+  ```
+
+- Delete a task:  
+  ```
+  delete 2
+  ```
+
+- Exit the chatbot:  
+  ```
+  bye
+  ```
+
+For a full list of commands, check out the [User Guide](docs/README.md).
+
+---
+
+## Why Choose Me?
+
+- **Flexible Date Formats**: I understand dates and times in many formats, so you don’t have to worry about getting it "just right."
+- **Automatic Saving**: Your tasks are saved automatically, so you don’t have to lift a finger.
+- **User-Friendly**: I’m designed to be intuitive and easy to use, even if you’re not a tech genius.
+
+---
+
+## Getting Started
+
+1. Download the latest version of `Amadeus` from [here](https://github.com/your-repo-link).
+2. Navigate to the folder where you saved the application and run:
    ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+   java -jar amadeus.jar
    ```
+3. I’ll greet you with a welcome message. Start typing commands, and I’ll take care of the rest!
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+---
+**El Psy Kongroo.**  
+I hope you enjoy using me to manage your tasks. If you have any questions or feedback, feel free to reach out. Let’s make this timeline the best one yet!
