@@ -1,24 +1,29 @@
-/**
- * Command to add a new ToDo task to the task list.
- * This command parses the user input to create a ToDo task and adds it to the list.
- */
-
 package amadeus.cognition;
 
 import amadeus.brain.AmadeusException;
 import amadeus.workspace.TaskList;
 import amadeus.workspace.ToDo;
 
+/**
+ * Command to add a new {@link amadeus.workspace.ToDo} task to the task list.
+ * <p>
+ * This command parses the user input to create a {@link amadeus.workspace.ToDo} task and adds it to the list.
+ * The input is expected to contain a task description.
+ * </p>
+ */
 public class ToDoCommand extends Command
 {
     ToDo td;
 
     /**
-     * Constructs a new `ToDoCommand` by parsing the user input.
-     * The input is expected to contain a task description.
+     * Constructs a new {@code ToDoCommand} by parsing the user input.
+     * <p>
+     * The input is expected to contain a task description. If the input is empty,
+     * an {@link amadeus.brain.AmadeusException} is thrown.
+     * </p>
      *
-     * @param input The user input containing the task description.
-     * @throws AmadeusException If the input is empty.
+     * @param input the user input containing the task description; must not be {@code null} or empty.
+     * @throws AmadeusException if the input is empty or invalid.
      */
     public ToDoCommand(String input) throws AmadeusException
     {
@@ -33,9 +38,9 @@ public class ToDoCommand extends Command
     }
 
     /**
-     * Executes the command by adding the ToDo task to the task list.
+     * Executes the command by adding the {@link amadeus.workspace.ToDo} task to the task list.
      *
-     * @throws AmadeusException If an error occurs while adding the task.
+     * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
     public void execute() throws AmadeusException

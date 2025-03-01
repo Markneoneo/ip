@@ -1,25 +1,30 @@
-/**
- * Abstract base class representing a generic task.
- * This class provides the foundational properties and methods for tasks, including
- * a name, completion status, and methods to update and display task details.
- * Subclasses can extend this class to create specific task types (Deadline, Event, ToDo).
- */
-
 package amadeus.workspace;
 
+/**
+ * Abstract base class representing a generic task.
+ * <p>
+ * This class provides the foundational properties and methods for tasks, including
+ * a name, completion status, and methods to update and display task details.
+ * Subclasses can extend this class to create specific task types (e.g., {@link Deadline}, {@link Event}, {@link ToDo}).
+ * </p>
+ */
 public abstract class Task
 {
-    // The name or description of the task.
+    /**
+     * The name or description of the task.
+     */
     protected String name;
-    // The completion status of the task (true if complete, false if incomplete).
+    /**
+     * The completion status of the task (true if complete, false if incomplete).
+     */
     protected boolean isDone;
 
 
     /**
-     * Initializes a new Task with the given name.
+     * Initializes a new {@code Task} with the given name.
      * The task is marked as incomplete by default.
      *
-     * @param input The name or description of the task.
+     * @param input the name or description of the task; must not be {@code null}.
      */
     public Task(String input)
     {
@@ -29,10 +34,10 @@ public abstract class Task
 
 
     /**
-     * Initializes a new Task with the given name and completion status.
+     * Initializes a new {@code Task} with the given name and completion status.
      *
-     * @param input The name or description of the task.
-     * @param done  A boolean indicating whether the task is completed (true) or not (false).
+     * @param input the name or description of the task; must not be {@code null}.
+     * @param done  a boolean indicating whether the task is completed (true) or not (false).
      */
     public Task(String input, boolean done)
     {
@@ -41,6 +46,11 @@ public abstract class Task
     }
 
 
+    /**
+     * Returns the name or description of the task.
+     *
+     * @return the name or description of the task.
+     */
     public String getName()
     {
         return name;
@@ -48,9 +58,28 @@ public abstract class Task
 
 
     /**
+     * Returns the completion status of the task.
+     *
+     * @return {@code true} if the task is complete, {@code false} otherwise.
+     */
+    public boolean getDone() { return isDone; }
+
+
+    /**
+     * Returns the details of the task.
+     * <p>
+     * Subclasses must implement this method to provide task-specific details.
+     * </p>
+     *
+     * @return the details of the task as a formatted string.
+     */
+    public abstract String getDetails(); // To be implemented by subclasses
+
+
+    /**
      * Updates the completion status of the task.
      *
-     * @param status The new completion status (true for complete, false for incomplete).
+     * @param status the new completion status (true for complete, false for incomplete).
      */
     public void updateDone(boolean status)
     {
@@ -81,9 +110,11 @@ public abstract class Task
 
     /**
      * Converts the task to a file-friendly format.
-     * Subclasses must implement this method.
+     * <p>
+     * Subclasses must implement this method to provide a format suitable for saving to a file.
+     * </p>
      *
-     * @return A string representation of the task in a format suitable for saving to a file.
+     * @return a string representation of the task in a format suitable for saving to a file.
      */
     public abstract String toFileFormat();
 }

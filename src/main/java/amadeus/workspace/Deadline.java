@@ -1,26 +1,30 @@
-/**
- * Represents a task with a specific deadline.
- * Inherits from the {@link Task} class.
- */
-
 package amadeus.workspace;
+
 import amadeus.perception.DateConverter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a task with a specific deadline.
+ * <p>
+ * This class extends the {@link Task} class and provides functionality specific to deadline tasks.
+ * </p>
+ */
 public class Deadline extends Task
 {
-    // The due date/time of the deadline task.
+    /**
+     * The due date/time of the deadline task.
+     */
     protected Object by;
 
 
     /**
-     * Constructs a Deadline task with a name and due date/time.
+     * Constructs a {@code Deadline} task with a name and due date/time.
      *
-     * @param name The name or description of the task.
-     * @param by   The deadline by which the task must be completed.
+     * @param name the name or description of the task; must not be {@code null}.
+     * @param by   the deadline by which the task must be completed; must not be {@code null}.
      */
     public Deadline(String name, Object by)
     {
@@ -30,11 +34,11 @@ public class Deadline extends Task
 
 
     /**
-     * Constructs a Deadline task with a name, completion status and due date/time.
+     * Constructs a {@code Deadline} task with a name, completion status, and due date/time.
      *
-     * @param name The name or description of the task.
-     * @param done  A boolean indicating whether the task is completed (true) or not (false).
-     * @param by   The deadline by which the task must be completed.
+     * @param name the name or description of the task; must not be {@code null}.
+     * @param done a boolean indicating whether the task is completed (true) or not (false).
+     * @param by   the deadline by which the task must be completed; must not be {@code null}.
      */
     public Deadline(String name, boolean done, Object by)
     {
@@ -55,23 +59,36 @@ public class Deadline extends Task
 
 
     /**
-     * Returns a string representation of the Deadline, including its name
-     * and due date/time.
+     * Returns the details of the {@code Deadline} task, including the due date/time.
      *
-     * @return A formatted string representing the deadline details.
+     * @return the details of the deadline as a formatted string.
      */
     @Override
-    public String toString()
+    public String getDetails()
     {
-        return name + " ⏰Due by:【" + DateConverter.formatDate(by) + "】";
+        return " ⏰ \033[31;1mDue by:\033[0m【" + DateConverter.formatDate(by) + "】";
     }
 
 
     /**
-     * Converts the Deadline task to a file-friendly format.
-     * The format is: `D | <isDone> | <description> | <by>`
+     * Returns a string representation of the {@code Deadline}, including its name and due date/time.
      *
-     * @return A string representation of the Deadline task in a format suitable for saving to a file.
+     * @return a formatted string representing the deadline details.
+     */
+    @Override
+    public String toString()
+    {
+        return name + " ⏰ \033[31;1mDue by:\033[0m【" + DateConverter.formatDate(by) + "】";
+    }
+
+
+    /**
+     * Converts the {@code Deadline} task to a file-friendly format.
+     * <p>
+     * The format is: {@code D | <isDone> | <description> | <by>}.
+     * </p>
+     *
+     * @return a string representation of the {@code Deadline} task in a format suitable for saving to a file.
      */
     @Override
     public String toFileFormat()
@@ -84,8 +101,8 @@ public class Deadline extends Task
     /**
      * Formats a date or date-time object into a string for saving to a file.
      *
-     * @param date The date or date-time object to format.
-     * @return The formatted date string.
+     * @param date the date or date-time object to format; must not be {@code null}.
+     * @return the formatted date string.
      */
     private String dateFileFormat(Object date)
     {

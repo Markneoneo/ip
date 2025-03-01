@@ -1,8 +1,3 @@
-/**
- * Command to add a new Event task to the task list.
- * This command parses the user input to create an Event task and adds it to the list.
- */
-
 package amadeus.cognition;
 
 import amadeus.brain.AmadeusException;
@@ -13,17 +8,27 @@ import amadeus.workspace.TaskList;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Command to add a new {@link amadeus.workspace.Event} task to the task list.
+ * <p>
+ * This command parses the user input to create an {@link amadeus.workspace.Event} task and adds it to the list.
+ * The input is expected to contain a description, a start time, and an end time, separated by {@code /from} and {@code /to}.
+ * </p>
+ */
 public class EventCommand extends Command
 {
     private final Event e;
 
     /**
-     * Constructs a new `EventCommand` by parsing the user input.
+     * Constructs a new {@code EventCommand} by parsing the user input.
+     * <p>
      * The input is expected to contain a description, a start time, and an end time,
-     * separated by "/from" and "/to".
+     * separated by {@code /from} and {@code /to}. If the input is empty, missing required parts,
+     * or contains an invalid time range, an {@link amadeus.brain.AmadeusException} is thrown.
+     * </p>
      *
-     * @param input The user input containing the task description, start time, and end time.
-     * @throws AmadeusException If the input is empty or in an invalid format.
+     * @param input the user input containing the task description, start time, and end time; must not be {@code null} or empty.
+     * @throws AmadeusException if the input is empty, in an invalid format, or contains an invalid time range.
      */
     public EventCommand(String input) throws AmadeusException
     {
@@ -75,9 +80,9 @@ public class EventCommand extends Command
     }
 
     /**
-     * Executes the command by adding the Event task to the task list.
+     * Executes the command by adding the {@link amadeus.workspace.Event} task to the task list.
      *
-     * @throws AmadeusException If an error occurs while adding the task.
+     * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
     public void execute() throws AmadeusException

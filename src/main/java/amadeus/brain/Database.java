@@ -1,10 +1,5 @@
-/**
- * Manages the storage and retrieval of tasks in the Amadeus application.
- * This class handles saving tasks to a file and loading tasks from a file,
- * ensuring data persistence across application sessions.
- */
-
 package amadeus.brain;
+
 import amadeus.perception.DateConverter;
 import amadeus.workspace.Deadline;
 import amadeus.workspace.Event;
@@ -18,21 +13,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Manages the storage and retrieval of tasks in the Amadeus application.
+ * <p>
+ * This class handles saving tasks to a file and loading tasks from a file,
+ * ensuring data persistence across application sessions. It supports three types of tasks:
+ * {@link ToDo}, {@link Deadline}, and {@link Event}.
+ * </p>
+ */
 public class Database
 {
     /**
      * The file path where tasks are saved and loaded from.
+     * <p>
+     * The default file path is {@code "Memory.txt"}.
+     * </p>
      */
     public final static String FILE_PATH = "Memory.txt";
 
 
     /**
      * Saves the current list of tasks to a file.
-     * Each task is converted to a file-friendly format using the `toFileFormat` method
-     * and written to the file specified by `FILE_PATH`.
+     * <p>
+     * Each task is converted to a file-friendly format using the {@link Task#toFileFormat()} method
+     * and written to the file specified by {@link #FILE_PATH}.
+     * </p>
      *
-     * @param tasks The list of tasks to save.
-     * @throws AmadeusException If an error occurs while saving tasks to the file.
+     * @param tasks the list of tasks to save; must not be {@code null}.
+     * @throws AmadeusException if an error occurs while saving tasks to the file.
      */
     public static void save(ArrayList<Task> tasks) throws AmadeusException
     {
@@ -56,15 +64,18 @@ public class Database
 
 
     /**
-     * Parses a line from the file into a `Task` object.
+     * Parses a line from the file into a {@link Task} object.
+     * <p>
      * The line is expected to be in a specific format, depending on the task type:
-     * - ToDo: `T | <isDone> | <description>`
-     * - Deadline: `D | <isDone> | <description> | <by>`
-     * - Event: `E | <isDone> | <description> | <from> | <to>`
+     * <ul>
+     *   <li><b>ToDo</b>: {@code T | <isDone> | <description>}</li>
+     *   <li><b>Deadline</b>: {@code D | <isDone> | <description> | <by>}</li>
+     *   <li><b>Event</b>: {@code E | <isDone> | <description> | <from> | <to>}</li>
+     * </ul>
      *
-     * @param line The line from the file to parse.
-     * @return The `Task` object corresponding to the line.
-     * @throws AmadeusException If the line is invalid or cannot be parsed.
+     * @param line the line from the file to parse; must not be {@code null}.
+     * @return the {@link Task} object corresponding to the line.
+     * @throws AmadeusException if the line is invalid or cannot be parsed.
      */
     public static Task parseSave(String line) throws AmadeusException
     {
@@ -104,12 +115,14 @@ public class Database
 
 
     /**
-     * Loads tasks from the file and returns them as a list of `Task` objects.
+     * Loads tasks from the file and returns them as a list of {@link Task} objects.
+     * <p>
      * If the file does not exist, an empty list is returned. If the file exists,
-     * each line is parsed into a `Task` object using the `parseSave` method.
+     * each line is parsed into a {@link Task} object using the {@link #parseSave(String)} method.
+     * </p>
      *
-     * @return A list of tasks loaded from the file.
-     * @throws AmadeusException If an error occurs while loading tasks from the file.
+     * @return a list of tasks loaded from the file; never {@code null}.
+     * @throws AmadeusException if an error occurs while loading tasks from the file.
      */
     public static ArrayList<Task> load() throws AmadeusException
     {

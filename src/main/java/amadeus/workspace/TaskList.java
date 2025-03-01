@@ -1,16 +1,18 @@
-/**
- * Manages the list of tasks in the Amadeus application.
- * This class provides methods to add, mark, delete, and reset tasks, ensuring
- * that changes are saved to the database and communicated to the user via speech.
- */
-
 package amadeus.workspace;
+
 import amadeus.brain.AmadeusException;
 import amadeus.brain.Database;
 import amadeus.personality.Speech;
 
 import java.util.ArrayList;
 
+/**
+ * Manages the list of tasks in the Amadeus application.
+ * <p>
+ * This class provides methods to add, mark, delete, and reset tasks, ensuring
+ * that changes are saved to the database and communicated to the user via speech.
+ * </p>
+ */
 public class TaskList
 {
     /**
@@ -20,10 +22,9 @@ public class TaskList
     public static ArrayList<Task> taskList;
 
 
-    /**
-     * Loads tasks from the database when the program starts.
-     * If an error occurs during loading, a runtime exception is thrown.
-     */
+
+     // Loads tasks from the database when the program starts.
+     // If an error occurs during loading, a runtime exception is thrown.
     static {
         try {
             taskList = Database.load();
@@ -47,12 +48,14 @@ public class TaskList
 
     //region Add Tasks to List
     /**
-     * Adds a new Deadline task to the task list.
+     * Adds a new {@link Deadline} task to the task list.
+     * <p>
      * The task is inserted at the end of the Deadline section, and the updated list is saved to the database.
      * The user is notified via speech that the task has been added.
+     * </p>
      *
-     * @param d The Deadline task to add.
-     * @throws AmadeusException If an error occurs while saving the updated list to the database.
+     * @param d the {@link Deadline} task to add; must not be {@code null}.
+     * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
     public static void addDeadline(Deadline d) throws AmadeusException
     {
@@ -73,12 +76,14 @@ public class TaskList
 
 
     /**
-     * Adds a new Event task to the task list.
+     * Adds a new {@link Event} task to the task list.
+     * <p>
      * The task is inserted at the end of the Event section, and the updated list is saved to the database.
      * The user is notified via speech that the task has been added.
+     * </p>
      *
-     * @param e The Event task to add.
-     * @throws AmadeusException If an error occurs while saving the updated list to the database.
+     * @param e the {@link Event} task to add; must not be {@code null}.
+     * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
     public static void addEvent(Event e) throws AmadeusException
     {
@@ -99,12 +104,14 @@ public class TaskList
 
 
     /**
-     * Adds a new ToDo task to the task list.
+     * Adds a new {@link ToDo} task to the task list.
+     * <p>
      * The task is inserted at the end of the ToDo section, and the updated list is saved to the database.
      * The user is notified via speech that the task has been added.
+     * </p>
      *
-     * @param td The ToDo task to add.
-     * @throws AmadeusException If an error occurs while saving the updated list to the database.
+     * @param td the {@link ToDo} task to add; must not be {@code null}.
+     * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
     public static void addToDo(ToDo td) throws AmadeusException
     {
@@ -127,11 +134,13 @@ public class TaskList
 
     /**
      * Marks a task as complete or incomplete based on the provided index.
+     * <p>
      * The updated task status is saved to the database, and the user is notified via speech.
+     * </p>
      *
-     * @param index  The index of the task to update (1-based).
-     * @param status The new completion status (true for complete, false for incomplete).
-     * @throws AmadeusException If the index is invalid or an error occurs while saving the updated list.
+     * @param index  the index of the task to update (1-based).
+     * @param status the new completion status (true for complete, false for incomplete).
+     * @throws AmadeusException if the index is invalid or an error occurs while saving the updated list.
      */
     public static void markDone(int index, boolean status) throws AmadeusException
     {
@@ -157,10 +166,12 @@ public class TaskList
 
     /**
      * Deletes a task from the task list based on the provided index.
+     * <p>
      * The updated list is saved to the database, and the user is notified via speech.
+     * </p>
      *
-     * @param index The index of the task to delete (1-based).
-     * @throws AmadeusException If the index is invalid or an error occurs while saving the updated list.
+     * @param index the index of the task to delete (1-based).
+     * @throws AmadeusException if the index is invalid or an error occurs while saving the updated list.
      */
     public static void deleteTask(int index) throws AmadeusException
     {
@@ -186,9 +197,12 @@ public class TaskList
 
     /**
      * Resets the task list by clearing all tasks.
-     * The updated list is saved to the database, and the user is notified via speech.
+     * <p>
+     * This method removes all tasks from the task list, saves the updated (empty) list to the database,
+     * and notifies the user via speech that the task list has been reset.
+     * </p>
      *
-     * @throws AmadeusException If an error occurs while saving the updated list.
+     * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
     public static void resetList() throws AmadeusException
     {
