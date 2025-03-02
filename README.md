@@ -1,44 +1,45 @@
-# Amadeus Task Manager
+# The Amadeus System
 
 **Greetings, I'm Makise Kurisu, also known as Amadeus.**  
 I’m your personal assistant for managing tasks. Whether you’re a busy scientist or just someone trying to stay organized, I’m here to help you keep track of everything. Let’s make this timeline a productive one!
 
 ```
-                                                               @
-                                                            @@@@
-                                                          @@@@@@
-                                                       @@@@@@#@@
-                                                     @@@@@@@@@@@
-                                                   @@@@@@@  @@@@
-                                                @@@@@@@:    @@@@
-                                              @@@@@@@       @@@@
-                                           -@@@@@@#         @@@@
-                                         @@@@@@@            @@@@
-                                       @@@@@@@              @@@@
-                                     @@@@@@=                @@@@
-                                  @@@@@@@                   @@@@
-                               +@@@@@@=                     @@@@
-                             @@@@@@@                        @@@@
-                           @@@@@@@                          @@@@
-                         @@@@@@#                            @@@@
-                      @@@@@@@+                              @@@@
-                   @@@@@@@#        @@@@@@@@@@@@@@@@@@@@@@@  @@@@
-                 @%#@*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@=@@@@@@@@@@@@@@@@@#-
-               #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=+         @@ @@@@@@@@@@@@@@@@%@@@@@@@@
-             @@%@@@@                                     @@                       @@@
-          @@@@@@@@ @@@@@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
-        @@@#@@@    @@@   @@    @@@         @@@ @@#       @@ @@       @@@ @@       @@@ @@
-     @@@@@@@@      @@@   @@    @@@ @@@@@@@@@@@ @@@       @@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
-   @@@@@@@         @@@   #@    @@@ @@       @@ @@@       @@ @@           @@       @@%          @@
- @@@@@@@@@@@@@@@@@@@@@   @@    @@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@
-                               @@-                                         @@@@@@@
-                               @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                               @@@@@@@+
-                                                              @@@@@@-
-                                                             @@@@@@
-                                                            @@@@@
-                                                            @@@
-                                                            @
+    
+                                                                   @
+                                                                @@@@
+                                                              @@@@@@
+                                                           @@@@@@#@@
+                                                         @@@@@@@@@@@
+                                                       @@@@@@@  @@@@
+                                                    @@@@@@@:    @@@@
+                                                  @@@@@@@       @@@@
+                                               -@@@@@@#         @@@@
+                                             @@@@@@@            @@@@
+                                           @@@@@@@              @@@@
+                                         @@@@@@=                @@@@
+                                      @@@@@@@                   @@@@
+                                   +@@@@@@=                     @@@@
+                                 @@@@@@@                        @@@@
+                               @@@@@@@                          @@@@
+                             @@@@@@#                            @@@@
+                          @@@@@@@+                              @@@@
+                       @@@@@@@#        @@@@@@@@@@@@@@@@@@@@@@@  @@@@
+                     @%#@*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@=@@@@@@@@@@@@@@@@@#-
+                   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=+         @@ @@@@@@@@@@@@@@@@%@@@@@@@@
+                 @@%@@@@                                     @@                       @@@
+              @@@@@@@@ @@@@@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
+            @@@#@@@    @@@   @@    @@@         @@@ @@#       @@ @@       @@@ @@       @@@ @@
+         @@@@@@@@      @@@   @@    @@@ @@@@@@@@@@@ @@@       @@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
+       @@@@@@@         @@@   #@    @@@ @@       @@ @@@       @@ @@           @@       @@%          @@
+     @@@@@@@@@@@@@@@@@@@@@   @@    @@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@
+                                   @@-                                         @@@@@@@
+                                   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                                                                   @@@@@@@+
+                                                                  @@@@@@-
+                                                                 @@@@@@
+                                                                @@@@@
+                                                                @@@
+                                                                @
 ```
 
 ---
@@ -94,7 +95,7 @@ Using me is simple! Just type commands to add, view, or manage your tasks. Here 
   bye
   ```
 
-For a full list of commands, check out the [User Guide](docs/README.md).
+For a full list of commands, check out the [User Guide](https://markneoneo.github.io/ip/).
 
 ---
 
@@ -108,12 +109,36 @@ For a full list of commands, check out the [User Guide](docs/README.md).
 
 ## Getting Started
 
-1. Download the latest version of `Amadeus` from [here](https://github.com/your-repo-link).
+1. Download the latest version of `Amadeus` from [here](https://github.com/Markneoneo/ip).
 2. Navigate to the folder where you saved the application and run:
    ```
    java -jar amadeus.jar
    ```
 3. I’ll greet you with a welcome message. Start typing commands, and I’ll take care of the rest!
+
+---
+
+## ⚠️ UI warning
+
+Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI:
+
+- **Use Git Bash, Windows Terminal or IntelliJ**:  
+  - For `.jar` files:  
+    ```
+    java -Dfile.encoding=UTF-8 -jar Amadeus.jar
+    ```
+  - For compiling:  
+    ```
+    javac -encoding UTF-8 -d . amadeus/*.java
+    java -Dfile.encoding=UTF-8 amadeus.Amadeus
+    ```
+
+- **Windows PowerShell**: Works but **no emojis**:  
+  ```
+  java '-Dfile.encoding=UTF-8' -jar Amadeus.jar
+  ```
+
+- **Avoid cmd.exe**: It doesn’t support ANSI codes or emojis.
 
 ---
 **El Psy Kongroo.**  
