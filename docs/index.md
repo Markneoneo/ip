@@ -21,13 +21,30 @@ Welcome to **Amadeus Task Manager**, your personal assistant for managing tasks 
    ```
 4. Amadeus will greet you with a welcome message. You can start using the chatbot immediately!
 
-Amadeus heavily utilizes ANSI text formatting and styling, as well as UTF-8 emojis.
-If you are running your program in cmd.exe (Windows Command Prompt), it does not support ANSI codes by default.
-Use Windows Terminal, PowerShell, or Git Bash, which have better support for ANSI sequences.
-```
-javac -encoding UTF-8 -d . amadeus/*.java
-java -Dfile.encoding=UTF-8 amadeus.Amadeus
-```
+
+---
+
+## ⚠️ UI warning
+
+Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI:
+
+- **Use Git Bash, Windows Terminal or IntelliJ**:  
+  - For `.jar` files:  
+    ```
+    java -Dfile.encoding=UTF-8 -jar Amadeus.jar
+    ```
+  - For compiling:  
+    ```
+    javac -encoding UTF-8 -d . amadeus/*.java
+    java -Dfile.encoding=UTF-8 amadeus.Amadeus
+    ```
+
+- **Windows PowerShell**: Works but **no emojis**:  
+  ```
+  java '-Dfile.encoding=UTF-8' -jar Amadeus.jar
+  ```
+
+- **Avoid cmd.exe**: It doesn’t support ANSI codes or emojis.
 
 ---
 
