@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A utility class for parsing and formatting dates and date-times.
@@ -21,38 +22,38 @@ public class DateConverter
 {
     // Supported date formats
     private static final List<DateTimeFormatter> DATE_FORMATS = Arrays.asList(
-            DateTimeFormatter.ofPattern("d/M/yyyy"), // e.g., 2/12/2019
-            DateTimeFormatter.ofPattern("d-M-yyyy"), // e.g., 2-12-2019
-            DateTimeFormatter.ofPattern("d M yyyy")  // e.g., 2 12 2019
+            DateTimeFormatter.ofPattern("d/M/yyyy", Locale.US), // e.g., 2/12/2019
+            DateTimeFormatter.ofPattern("d-M-yyyy", Locale.US), // e.g., 2-12-2019
+            DateTimeFormatter.ofPattern("d M yyyy", Locale.US)  // e.g., 2 12 2019
     );
 
     // Supported date-time formats
     private static final List<DateTimeFormatter> DATE_TIME_FORMATS = Arrays.asList(
-            DateTimeFormatter.ofPattern("d/M/yyyy ha"),    // e.g., 2/12/2019 6PM
-            DateTimeFormatter.ofPattern("d/M/yyyy h:mma"), // e.g., 2/12/2019 6:00PM
-            DateTimeFormatter.ofPattern("d/M/yyyy h.mma"), // e.g., 2/12/2019 6.30AM
-            DateTimeFormatter.ofPattern("d/M/yyyy HHmm"),  // e.g., 2/12/2019 1800
-            DateTimeFormatter.ofPattern("d/M/yyyy HH:mm"), // e.g., 2/12/2019 18:00
-            DateTimeFormatter.ofPattern("d/M/yyyy HH.mm"), // e.g., 2/12/2019 18.00
-            DateTimeFormatter.ofPattern("d-M-yyyy ha"),    // e.g., 2-12-2019 6PM
-            DateTimeFormatter.ofPattern("d-M-yyyy h:mma"), // e.g., 2-12-2019 6:00PM
-            DateTimeFormatter.ofPattern("d-M-yyyy h.mma"), // e.g., 2-12-2019 6.30AM
-            DateTimeFormatter.ofPattern("d-M-yyyy HHmm"),  // e.g., 2-12-2019 1800
-            DateTimeFormatter.ofPattern("d-M-yyyy HH:mm"), // e.g., 2-12-2019 18:00
-            DateTimeFormatter.ofPattern("d-M-yyyy HH.mm"), // e.g., 2-12-2019 18.00
-            DateTimeFormatter.ofPattern("d M yyyy ha"),    // e.g., 2 12 2019 6PM
-            DateTimeFormatter.ofPattern("d M yyyy h:mma"), // e.g., 2 12 2019 6:00PM
-            DateTimeFormatter.ofPattern("d M yyyy h.mma"), // e.g., 2 12 2019 6.30AM
-            DateTimeFormatter.ofPattern("d M yyyy HHmm"),  // e.g., 2 12 2019 1800
-            DateTimeFormatter.ofPattern("d M yyyy HH:mm"), // e.g., 2 12 2019 18:00
-            DateTimeFormatter.ofPattern("d M yyyy HH.mm")  // e.g., 2 12 2019 18.00
+            DateTimeFormatter.ofPattern("d/M/yyyy ha", Locale.US),    // e.g., 2/12/2019 6PM
+            DateTimeFormatter.ofPattern("d/M/yyyy h:mma", Locale.US), // e.g., 2/12/2019 6:00PM
+            DateTimeFormatter.ofPattern("d/M/yyyy h.mma", Locale.US), // e.g., 2/12/2019 6.30AM
+            DateTimeFormatter.ofPattern("d/M/yyyy HHmm", Locale.US),  // e.g., 2/12/2019 1800
+            DateTimeFormatter.ofPattern("d/M/yyyy HH:mm", Locale.US), // e.g., 2/12/2019 18:00
+            DateTimeFormatter.ofPattern("d/M/yyyy HH.mm", Locale.US), // e.g., 2/12/2019 18.00
+            DateTimeFormatter.ofPattern("d-M-yyyy ha", Locale.US),    // e.g., 2-12-2019 6PM
+            DateTimeFormatter.ofPattern("d-M-yyyy h:mma", Locale.US), // e.g., 2-12-2019 6:00PM
+            DateTimeFormatter.ofPattern("d-M-yyyy h.mma", Locale.US), // e.g., 2-12-2019 6.30AM
+            DateTimeFormatter.ofPattern("d-M-yyyy HHmm", Locale.US),  // e.g., 2-12-2019 1800
+            DateTimeFormatter.ofPattern("d-M-yyyy HH:mm", Locale.US), // e.g., 2-12-2019 18:00
+            DateTimeFormatter.ofPattern("d-M-yyyy HH.mm", Locale.US), // e.g., 2-12-2019 18.00
+            DateTimeFormatter.ofPattern("d M yyyy ha", Locale.US),    // e.g., 2 12 2019 6PM
+            DateTimeFormatter.ofPattern("d M yyyy h:mma", Locale.US), // e.g., 2 12 2019 6:00PM
+            DateTimeFormatter.ofPattern("d M yyyy h.mma", Locale.US), // e.g., 2 12 2019 6.30AM
+            DateTimeFormatter.ofPattern("d M yyyy HHmm", Locale.US),  // e.g., 2 12 2019 1800
+            DateTimeFormatter.ofPattern("d M yyyy HH:mm", Locale.US), // e.g., 2 12 2019 18:00
+            DateTimeFormatter.ofPattern("d M yyyy HH.mm", Locale.US)  // e.g., 2 12 2019 18.00
     );
 
     // Output format for dates
-    private static final DateTimeFormatter OUTPUT_DATE_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy");
+    private static final DateTimeFormatter OUTPUT_DATE_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.US);
 
     // Output format for date-times
-    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma");
+    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma", Locale.US);
 
 
     /**
