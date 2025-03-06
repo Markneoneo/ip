@@ -6,15 +6,13 @@ package amadeus.workspace;
  * This class extends the {@link Task} class and provides functionality specific to ToDo tasks.
  * </p>
  */
-public class ToDo extends Task
-{
+public class ToDo extends Task {
     /**
      * Constructs a {@code ToDo} task with a given name or description.
      *
      * @param name the name or description of the task; must not be {@code null}.
      */
-    public ToDo(String name)
-    {
+    public ToDo(String name) {
         super(name);
     }
 
@@ -25,7 +23,9 @@ public class ToDo extends Task
      * @param name the name or description of the task; must not be {@code null}.
      * @param done a boolean indicating whether the task is completed (true) or not (false).
      */
-    public ToDo(String name, boolean done) { super(name, done); }
+    public ToDo(String name, boolean done) {
+        super(name, done);
+    }
 
 
     /**
@@ -37,8 +37,7 @@ public class ToDo extends Task
      * @return a string representation of the {@code ToDo} task in a format suitable for saving to a file.
      */
     @Override
-    public String toFileFormat()
-    {
+    public String toFileFormat() {
         return "T | " + (isDone ? "1" : "0") + " | " + name;
     }
 
@@ -52,8 +51,7 @@ public class ToDo extends Task
      * @return an empty string.
      */
     @Override
-    public String getDetails()
-    {
+    public String getDetails() {
         return ""; // No details for ToDo tasks
     }
 }

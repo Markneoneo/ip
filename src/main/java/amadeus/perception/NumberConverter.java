@@ -1,6 +1,6 @@
 package amadeus.perception;
 
-import java.util.*;
+import java.util.Map;
 
 /**
  * A utility class for converting written number words into their numeric equivalents.
@@ -10,8 +10,7 @@ import java.util.*;
  * handles compound numbers like "twenty-one" or "three hundred and five."
  * </p>
  */
-public class NumberConverter
-{
+public class NumberConverter {
     /**
      * Mapping of unit numbers (one to nineteen) to their integer values.
      */
@@ -53,40 +52,32 @@ public class NumberConverter
      * @param input the number written in words (e.g., "two hundred forty-five"); must not be {@code null}.
      * @return the integer representation of the input word, or -1 for invalid input.
      */
-    public static int wordToNumber(String input)
-    {
-        if (input == null || input.trim().isEmpty()) { return -1; } // Invalid Input
+    public static int wordToNumber(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            return -1;
+        } // Invalid Input
 
         // Splits the input into an array of words using spaces/tabs/newlines as delimiters
         String[] words = input.toLowerCase().replaceAll("-", " ").split("\\s+");
         int result = 0; // Final number
         int current = 0; // Value of the current segment
 
-        for (String word : words)
-        {
-            if (UNITS.containsKey(word))
-            {
+        for (String word : words) {
+            if (UNITS.containsKey(word)) {
                 current += UNITS.get(word);
-            }
-            else if (TENS.containsKey(word))
-            {
+            } else if (TENS.containsKey(word)) {
                 current += TENS.get(word);
-            }
-            else if (MULTIPLIERS.containsKey(word))
-            {
+            } else if (MULTIPLIERS.containsKey(word)) {
                 int multiplier = MULTIPLIERS.get(word);
 
-                if (multiplier == 100)
-                {
+                if (multiplier == 100) {
                     current *= multiplier; // Handle "hundred"
                 } else {
                     current *= multiplier; // Handle "thousand"
                     result += current; // Add to the final result
                     current = 0; // Reset for the next part
                 }
-            }
-            else if (!word.equals("and"))
-            {
+            } else if (!word.equals("and")) {
                 return -1; // Invalid word
             }
         }
@@ -103,8 +94,7 @@ public class NumberConverter
      * @param argument the string containing the task index (numeric or word format); must not be {@code null}.
      * @return the task index as an integer, or -1 if the argument is invalid.
      */
-    public static int extractIndex(String argument)
-    {
+    public static int extractIndex(String argument) {
         try {
             // Try parsing the argument as a number directly
             return Integer.parseInt(argument);

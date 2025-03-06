@@ -3,7 +3,10 @@ package amadeus.cognition;
 import amadeus.brain.AmadeusException;
 import amadeus.perception.DateConverter;
 import amadeus.personality.Speech;
-import amadeus.workspace.*;
+import amadeus.workspace.Deadline;
+import amadeus.workspace.Event;
+import amadeus.workspace.Task;
+import amadeus.workspace.TaskList;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,8 +20,7 @@ import java.util.ArrayList;
  * and filters tasks that match the specified condition.
  * </p>
  */
-public class CheckCommand extends Command
-{
+public class CheckCommand extends Command {
     ArrayList<Task> filteredTasks = new ArrayList<>(); // List of filtered Tasks based on date
     String preposition = "on"; // on, before or after
     String formattedDate; // String of date inquiry
@@ -33,8 +35,7 @@ public class CheckCommand extends Command
      * @param argument the user input containing the date or date range; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty or invalid.
      */
-    public CheckCommand(String argument) throws AmadeusException
-    {
+    public CheckCommand(String argument) throws AmadeusException {
         // Check if the input is empty
         if (argument.isEmpty()) {
             // Missing Argument in the Input Exception
@@ -43,8 +44,7 @@ public class CheckCommand extends Command
 
         String[] parts = argument.trim().split(" ", 2); // Trim to remove extra spaces
 
-        if (parts.length == 0 || parts[0].isEmpty())
-        {
+        if (parts.length == 0 || parts[0].isEmpty()) {
             // Invalid: Empty argument after "check"
             throw AmadeusException.invalidCheck();
         }
@@ -55,12 +55,10 @@ public class CheckCommand extends Command
         boolean isAfter = dateString.startsWith("after");
 
         // Special case: If it starts with "before" or "after", extract date
-        if (isBefore || isAfter)
-        {
+        if (isBefore || isAfter) {
             String[] splitParts = dateString.split(" ", 2); // Split at first space
 
-            if (splitParts.length < 2)
-            {
+            if (splitParts.length < 2) {
                 // Invalid: "check before" (no date provided)
                 throw AmadeusException.invalidCheck();
             }
@@ -75,20 +73,14 @@ public class CheckCommand extends Command
                 : ((LocalDate) date).atStartOfDay(); // Midnight 00:00
 
         // Filter tasks based on the type of check
-        for (Task task : TaskList.getTaskList())
-        {
+        for (Task task : TaskList.getTaskList()) {
             LocalDateTime taskDateTime = getTaskDateTime(task);
-            if (taskDateTime != null)
-            {
-                if (isBefore && taskDateTime.isBefore(checkDateTime))
-                {
+            if (taskDateTime != null) {
+                if (isBefore && taskDateTime.isBefore(checkDateTime)) {
                     filteredTasks.add(task);
-                }
-                else if (isAfter && taskDateTime.isAfter(checkDateTime))
-                {
+                } else if (isAfter && taskDateTime.isAfter(checkDateTime)) {
                     filteredTasks.add(task);
-                }
-                else if (isExactMatch(taskDateTime, checkDateTime)) // Exact date or date-time
+                } else if (isExactMatch(taskDateTime, checkDateTime)) // Exact date or date-time
                 {
                     filteredTasks.add(task);
                 }
@@ -116,11 +108,9 @@ public class CheckCommand extends Command
      * </p>
      */
     @Override
-    public void execute()
-    {
+    public void execute() {
         // Display the filtered tasks
-        if (filteredTasks.isEmpty())
-        {
+        if (filteredTasks.isEmpty()) {
             System.out.printf("⚠️ No tasks found occurring \033[1m%s\033[0m \033[4m%s\033[0m!\n", preposition, formattedDate);
         } else {
             System.out.printf("✍️ These are the Tasks occurring \033[1m%s\033[0m \033[4m%s\033[0m:\n", preposition, formattedDate);
@@ -132,12 +122,11 @@ public class CheckCommand extends Command
     /**
      * Checks if a task's date/time matches the check date/time based on the rules.
      *
-     * @param taskDateTime the task's date/time.
+     * @param taskDateTime  the task's date/time.
      * @param checkDateTime the check date/time.
      * @return {@code true} if the task should be included based on the check conditions.
      */
-    private boolean isExactMatch(LocalDateTime taskDateTime, LocalDateTime checkDateTime)
-    {
+    private boolean isExactMatch(LocalDateTime taskDateTime, LocalDateTime checkDateTime) {
         // Extract date parts
         LocalDate taskDate = taskDateTime.toLocalDate();
         LocalDate checkDate = checkDateTime.toLocalDate();
@@ -170,17 +159,13 @@ public class CheckCommand extends Command
      * @param task the task to extract the date and time from.
      * @return the date and time of the task, or {@code null} if the task has no date.
      */
-    private LocalDateTime getTaskDateTime(Task task)
-    {
-        if (task instanceof Deadline)
-        {
+    private LocalDateTime getTaskDateTime(Task task) {
+        if (task instanceof Deadline) {
             Object by = ((Deadline) task).getBy();
             return (by instanceof LocalDateTime)
                     ? (LocalDateTime) by
                     : ((LocalDate) by).atStartOfDay();
-        }
-        else if (task instanceof Event)
-        {
+        } else if (task instanceof Event) {
             Object from = ((Event) task).getFrom();
             return (from instanceof LocalDateTime)
                     ? (LocalDateTime) from

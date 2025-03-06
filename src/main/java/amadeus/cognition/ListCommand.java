@@ -1,6 +1,7 @@
 package amadeus.cognition;
 
 import amadeus.personality.Speech;
+
 import static amadeus.workspace.TaskList.taskList;
 
 /**
@@ -9,8 +10,7 @@ import static amadeus.workspace.TaskList.taskList;
  * This command prints the list of tasks to the console, organized by type.
  * </p>
  */
-public class ListCommand extends Command
-{
+public class ListCommand extends Command {
     /**
      * Displays the current list of tasks to the console.
      * <p>
@@ -19,8 +19,7 @@ public class ListCommand extends Command
      * </p>
      */
     @Override
-    public void execute()
-    {
+    public void execute() {
         Speech.sayList(taskList);
     }
 }

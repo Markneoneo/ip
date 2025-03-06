@@ -11,8 +11,7 @@ import amadeus.workspace.ToDo;
  * The input is expected to contain a task description.
  * </p>
  */
-public class ToDoCommand extends Command
-{
+public class ToDoCommand extends Command {
     ToDo td;
 
     /**
@@ -25,8 +24,7 @@ public class ToDoCommand extends Command
      * @param input the user input containing the task description; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty or invalid.
      */
-    public ToDoCommand(String input) throws AmadeusException
-    {
+    public ToDoCommand(String input) throws AmadeusException {
         // Check if the input is empty
         if (input.isEmpty()) {
             // Missing Argument in the Input Exception
@@ -43,8 +41,7 @@ public class ToDoCommand extends Command
      * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.addToDo(td);
     }
 }

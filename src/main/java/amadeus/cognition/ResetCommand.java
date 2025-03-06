@@ -9,8 +9,7 @@ import amadeus.workspace.TaskList;
  * This command clears all tasks from the task list and updates the database.
  * </p>
  */
-public class ResetCommand extends Command
-{
+public class ResetCommand extends Command {
     /**
      * Resets the task list by clearing all tasks and updating the database.
      * <p>
@@ -20,8 +19,7 @@ public class ResetCommand extends Command
      * @throws AmadeusException if an error occurs while resetting the task list.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.resetList();
     }
 }

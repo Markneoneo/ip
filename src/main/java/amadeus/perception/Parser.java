@@ -11,8 +11,7 @@ import amadeus.cognition.*;
  * adding tasks, marking tasks as complete, searching for tasks, and more.
  * </p>
  */
-public class Parser
-{
+public class Parser {
     // region Constants representing valid user commands.
     /**
      * Constant representing the "bye" command.
@@ -76,15 +75,13 @@ public class Parser
      * @return the corresponding {@link amadeus.cognition.Command} object.
      * @throws AmadeusException if the command is invalid or the input cannot be parsed.
      */
-    public static Command parse(String input) throws AmadeusException
-    {
+    public static Command parse(String input) throws AmadeusException {
         String[] words = input.split(" ", 2); // Split into command + optional argument
         String command = words[0].toLowerCase(); // Start with command
         String argument = words.length > 1 ? words[1] : "";
 
         // Match the command to the appropriate Command object
-        return switch (command)
-        {
+        return switch (command) {
             // Exits the command loop and terminates the interaction
             case BYE_COMMAND -> new ByeCommand();
 

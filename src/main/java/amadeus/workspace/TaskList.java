@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * that changes are saved to the database and communicated to the user via speech.
  * </p>
  */
-public class TaskList
-{
+public class TaskList {
     /**
      * ArrayList to store all tasks, categorized by type (Deadline, Event, ToDo, etc.).
      * The list is initialized by loading tasks from the database when the program starts.
@@ -22,9 +21,8 @@ public class TaskList
     public static ArrayList<Task> taskList;
 
 
-
-     // Loads tasks from the database when the program starts.
-     // If an error occurs during loading, a runtime exception is thrown.
+    // Loads tasks from the database when the program starts.
+    // If an error occurs during loading, a runtime exception is thrown.
     static {
         try {
             taskList = Database.load();
@@ -40,13 +38,13 @@ public class TaskList
      *
      * @return The current saved Task List
      */
-    public static ArrayList<Task> getTaskList()
-    {
+    public static ArrayList<Task> getTaskList() {
         return taskList;
     }
 
 
     //region Add Tasks to List
+
     /**
      * Adds a new {@link Deadline} task to the task list.
      * <p>
@@ -57,12 +55,10 @@ public class TaskList
      * @param d the {@link Deadline} task to add; must not be {@code null}.
      * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
-    public static void addDeadline(Deadline d) throws AmadeusException
-    {
+    public static void addDeadline(Deadline d) throws AmadeusException {
         // Insert the Deadline task at the end of the Deadline section
         int index = 0;
-        while (index < taskList.size() && taskList.get(index) instanceof Deadline)
-        {
+        while (index < taskList.size() && taskList.get(index) instanceof Deadline) {
             index++;
         }
         taskList.add(index, d);
@@ -85,12 +81,10 @@ public class TaskList
      * @param e the {@link Event} task to add; must not be {@code null}.
      * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
-    public static void addEvent(Event e) throws AmadeusException
-    {
+    public static void addEvent(Event e) throws AmadeusException {
         // Insert the Event task at the end of the Event section
         int index = 0;
-        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event))
-        {
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event)) {
             index++;
         }
         taskList.add(index, e);
@@ -113,12 +107,10 @@ public class TaskList
      * @param td the {@link ToDo} task to add; must not be {@code null}.
      * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
-    public static void addToDo(ToDo td) throws AmadeusException
-    {
+    public static void addToDo(ToDo td) throws AmadeusException {
         // Insert the ToDo task at the end of the ToDo section
         int index = 0;
-        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo))
-        {
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo)) {
             index++;
         }
         taskList.add(index, td);
@@ -142,8 +134,7 @@ public class TaskList
      * @param status the new completion status (true for complete, false for incomplete).
      * @throws AmadeusException if the index is invalid or an error occurs while saving the updated list.
      */
-    public static void markDone(int index, boolean status) throws AmadeusException
-    {
+    public static void markDone(int index, boolean status) throws AmadeusException {
         try {
             // Update the task's completion status
             taskList.get(index - 1).updateDone(status);
@@ -173,8 +164,7 @@ public class TaskList
      * @param index the index of the task to delete (1-based).
      * @throws AmadeusException if the index is invalid or an error occurs while saving the updated list.
      */
-    public static void deleteTask(int index) throws AmadeusException
-    {
+    public static void deleteTask(int index) throws AmadeusException {
         try {
             // Remove the task at the specified index
             Task removedTask = taskList.remove(index - 1);
@@ -204,8 +194,7 @@ public class TaskList
      *
      * @throws AmadeusException if an error occurs while saving the updated list to the database.
      */
-    public static void resetList() throws AmadeusException
-    {
+    public static void resetList() throws AmadeusException {
         // Clear all tasks from the list
         taskList.clear();
 

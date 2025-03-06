@@ -21,8 +21,7 @@ import java.util.Scanner;
  * {@link ToDo}, {@link Deadline}, and {@link Event}.
  * </p>
  */
-public class Database
-{
+public class Database {
     /**
      * The file path where tasks are saved and loaded from.
      * <p>
@@ -42,8 +41,7 @@ public class Database
      * @param tasks the list of tasks to save; must not be {@code null}.
      * @throws AmadeusException if an error occurs while saving tasks to the file.
      */
-    public static void save(ArrayList<Task> tasks) throws AmadeusException
-    {
+    public static void save(ArrayList<Task> tasks) throws AmadeusException {
         try {
             // Open the file for writing
             FileWriter writer = new FileWriter(FILE_PATH);
@@ -77,8 +75,7 @@ public class Database
      * @return the {@link Task} object corresponding to the line.
      * @throws AmadeusException if the line is invalid or cannot be parsed.
      */
-    public static Task parseSave(String line) throws AmadeusException
-    {
+    public static Task parseSave(String line) throws AmadeusException {
         try {
             // Split the line into parts using the delimiter " | "
             String[] parts = line.split(" \\| ");
@@ -88,8 +85,7 @@ public class Database
             String description = parts[2]; // Task description
 
             // Create the appropriate Task object based on the type
-            switch (type)
-            {
+            switch (type) {
                 case "D": // Deadline
                     // Parse the due date into a LocalDateTime object
                     Object by = DateConverter.parseDate(parts[3].trim());
@@ -124,8 +120,7 @@ public class Database
      * @return a list of tasks loaded from the file; never {@code null}.
      * @throws AmadeusException if an error occurs while loading tasks from the file.
      */
-    public static ArrayList<Task> load() throws AmadeusException
-    {
+    public static ArrayList<Task> load() throws AmadeusException {
         ArrayList<Task> tasks = new ArrayList<>();
 
         try {
@@ -133,8 +128,7 @@ public class Database
             File file = new File(FILE_PATH);
             Scanner scanner = new Scanner(file);
 
-            while (scanner.hasNextLine())
-            {
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine(); // Read each line
                 Task task = parseSave(line); // parse into Task object
                 tasks.add(task); // Add to Task List

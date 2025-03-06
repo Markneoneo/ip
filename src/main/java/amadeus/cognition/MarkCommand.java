@@ -11,8 +11,7 @@ import amadeus.workspace.TaskList;
  * The input is expected to contain a valid task index.
  * </p>
  */
-public class MarkCommand extends Command
-{
+public class MarkCommand extends Command {
     private final int index;
     private final boolean isDone;
 
@@ -27,8 +26,7 @@ public class MarkCommand extends Command
      * @param mark  indicates whether the task should be marked as complete ({@code true}) or incomplete ({@code false}).
      * @throws AmadeusException if the input is empty or the index is invalid.
      */
-    public MarkCommand(String input, boolean mark) throws AmadeusException
-    {
+    public MarkCommand(String input, boolean mark) throws AmadeusException {
         this.isDone = mark;
 
         // Check if the input is empty
@@ -53,8 +51,7 @@ public class MarkCommand extends Command
      * @throws AmadeusException if an error occurs while updating the task status.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.markDone(index, isDone);
     }
 }

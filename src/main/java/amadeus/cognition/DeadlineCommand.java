@@ -12,8 +12,7 @@ import amadeus.workspace.TaskList;
  * The input is expected to contain a description and a due date, separated by {@code /by}.
  * </p>
  */
-public class DeadlineCommand extends Command
-{
+public class DeadlineCommand extends Command {
     Deadline d;
 
     /**
@@ -26,8 +25,7 @@ public class DeadlineCommand extends Command
      * @param input the user input containing the task description and due date; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty or in an invalid format.
      */
-    public DeadlineCommand(String input) throws AmadeusException
-    {
+    public DeadlineCommand(String input) throws AmadeusException {
         // Check if the input is empty
         if (input.isEmpty()) {
             // Missing Argument in the Input Exception
@@ -35,8 +33,7 @@ public class DeadlineCommand extends Command
         }
 
         // Check if "/by" exist before splitting
-        if (!input.contains(" /by "))
-        {
+        if (!input.contains(" /by ")) {
             // Invalid Deadline Format Exception
             throw AmadeusException.invalidDeadline();
         }
@@ -58,8 +55,7 @@ public class DeadlineCommand extends Command
      * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.addDeadline(d);
     }
 }

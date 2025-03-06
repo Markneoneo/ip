@@ -18,8 +18,7 @@ import java.util.Locale;
  * and format these objects into user-friendly strings.
  * </p>
  */
-public class DateConverter
-{
+public class DateConverter {
     // Supported date formats
     private static final List<DateTimeFormatter> DATE_FORMATS = Arrays.asList(
             DateTimeFormatter.ofPattern("d/M/yyyy", Locale.US), // e.g., 2/12/2019
@@ -67,14 +66,12 @@ public class DateConverter
      * @return a {@link java.time.LocalDate} or {@link java.time.LocalDateTime} object.
      * @throws AmadeusException if the input string cannot be parsed into a valid date or date-time.
      */
-    public static Object parseDate(String dateString) throws AmadeusException
-    {
+    public static Object parseDate(String dateString) throws AmadeusException {
         // Normalize AM/PM to be case-insensitive
         dateString = dateString.replaceAll("(?i)am", "AM").replaceAll("(?i)pm", "PM");
 
         // Try parsing as a date-time first
-        for (DateTimeFormatter format : DATE_TIME_FORMATS)
-        {
+        for (DateTimeFormatter format : DATE_TIME_FORMATS) {
             try {
                 return LocalDateTime.parse(dateString, format);
 
@@ -84,8 +81,7 @@ public class DateConverter
         }
 
         // Try parsing as a date if date-time parsing fails
-        for (DateTimeFormatter format : DATE_FORMATS)
-        {
+        for (DateTimeFormatter format : DATE_FORMATS) {
             try {
                 return LocalDate.parse(dateString, format);
 
@@ -105,8 +101,7 @@ public class DateConverter
      * @param date the date or date-time object to format; must not be {@code null}.
      * @return the formatted date string (e.g., "Oct 15 2019" or "Oct 15 2019, 6:00PM").
      */
-    public static String formatDate(Object date)
-    {
+    public static String formatDate(Object date) {
         if (date instanceof LocalDateTime) {
             return ((LocalDateTime) date).format(OUTPUT_DATE_TIME_FORMAT);
 
@@ -124,8 +119,7 @@ public class DateConverter
      *
      * @param args command-line arguments (not used).
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //create dates from strings
         LocalDate d1 = LocalDate.parse("2019-12-01");
         LocalDate d2 = LocalDate.parse("2019-12-02");

@@ -10,8 +10,7 @@ import amadeus.brain.AmadeusException;
  * is a termination command.
  * </p>
  */
-public abstract class Command
-{
+public abstract class Command {
     /**
      * Executes the command.
      * <p>
@@ -32,8 +31,7 @@ public abstract class Command
      *
      * @return {@code true} if the command is a termination command, {@code false} otherwise.
      */
-    public boolean isBye()
-    {
+    public boolean isBye() {
         return false;
     }
 }

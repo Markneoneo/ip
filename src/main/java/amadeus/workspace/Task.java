@@ -8,8 +8,7 @@ package amadeus.workspace;
  * Subclasses can extend this class to create specific task types (e.g., {@link Deadline}, {@link Event}, {@link ToDo}).
  * </p>
  */
-public abstract class Task
-{
+public abstract class Task {
     /**
      * The name or description of the task.
      */
@@ -26,8 +25,7 @@ public abstract class Task
      *
      * @param input the name or description of the task; must not be {@code null}.
      */
-    public Task(String input)
-    {
+    public Task(String input) {
         this.name = input;
         this.isDone = false;
     }
@@ -39,8 +37,7 @@ public abstract class Task
      * @param input the name or description of the task; must not be {@code null}.
      * @param done  a boolean indicating whether the task is completed (true) or not (false).
      */
-    public Task(String input, boolean done)
-    {
+    public Task(String input, boolean done) {
         this.name = input;
         this.isDone = done;
     }
@@ -51,8 +48,7 @@ public abstract class Task
      *
      * @return the name or description of the task.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -62,7 +58,9 @@ public abstract class Task
      *
      * @return {@code true} if the task is complete, {@code false} otherwise.
      */
-    public boolean getDone() { return isDone; }
+    public boolean getDone() {
+        return isDone;
+    }
 
 
     /**
@@ -81,8 +79,7 @@ public abstract class Task
      *
      * @param status the new completion status (true for complete, false for incomplete).
      */
-    public void updateDone(boolean status)
-    {
+    public void updateDone(boolean status) {
         this.isDone = status;
     }
 
@@ -92,8 +89,7 @@ public abstract class Task
      *
      * @return The name or description of the task as a String.
      */
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 
@@ -102,8 +98,7 @@ public abstract class Task
      * Prints the task's name and completion status to the console.
      * If the task is complete, a checkmark (✔️) is displayed next to the name.
      */
-    public void printTask()
-    {
+    public void printTask() {
         System.out.print(this + (isDone ? " ✔️" : "") + "\n");
     }
 

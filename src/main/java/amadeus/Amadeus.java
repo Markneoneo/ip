@@ -22,8 +22,7 @@ import java.util.Scanner;
  *   <li>{@link amadeus.cognition.Command}: For executing the parsed commands.</li>
  * </ul>
  */
-public class Amadeus
-{
+public class Amadeus {
     /**
      * Scanner object for reading user input from the console.
      */
@@ -50,14 +49,12 @@ public class Amadeus
      *   <li>Check if the command is an exit command.</li>
      * </ol>
      */
-    public static void awaken()
-    {
+    public static void awaken() {
         // Display Amadeus Login Sequence
         Speech.sayWelcome();
 
         // Keep running until the exit command is given
-        while (!isExit)
-        {
+        while (!isExit) {
             try // Start the command loop
             {
                 // Read user input from console
@@ -92,8 +89,7 @@ public class Amadeus
      *
      * @param args command-line arguments (not used in this application).
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         awaken();
     }
 }

@@ -12,8 +12,7 @@ import java.time.format.DateTimeFormatter;
  * This class extends the {@link Task} class and provides functionality specific to event tasks.
  * </p>
  */
-public class Event extends Task
-{
+public class Event extends Task {
     /**
      * The start date/time of the event.
      */
@@ -32,8 +31,7 @@ public class Event extends Task
      * @param from the start date/time of the event; must not be {@code null}.
      * @param to   the end date/time of the event; must not be {@code null}.
      */
-    public Event(String name, Object from, Object to)
-    {
+    public Event(String name, Object from, Object to) {
         super(name);
         this.from = from;
         this.to = to;
@@ -48,8 +46,7 @@ public class Event extends Task
      * @param from the start date/time of the event; must not be {@code null}.
      * @param to   the end date/time of the event; must not be {@code null}.
      */
-    public Event(String name, boolean done, Object from, Object to)
-    {
+    public Event(String name, boolean done, Object from, Object to) {
         super(name, done);
         this.from = from;
         this.to = to;
@@ -61,8 +58,7 @@ public class Event extends Task
      *
      * @return The start date/time of the event.
      */
-    public Object getFrom()
-    {
+    public Object getFrom() {
         return from;
     }
 
@@ -73,8 +69,7 @@ public class Event extends Task
      * @return the details of the event as a formatted string.
      */
     @Override
-    public String getDetails()
-    {
+    public String getDetails() {
         return "\uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) + "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
     }
 
@@ -85,8 +80,7 @@ public class Event extends Task
      * @return a formatted string representing the event details.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return name + " \uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) + "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
     }
 
@@ -100,8 +94,7 @@ public class Event extends Task
      * @return a string representation of the {@code Event} task in a format suitable for saving to a file.
      */
     @Override
-    public String toFileFormat()
-    {
+    public String toFileFormat() {
         String fromFormatted = dateFileFormat(from);
         String toFormatted = dateFileFormat(to);
         return "E | " + (isDone ? "1" : "0") + " | " + name + " | " + fromFormatted + " | " + toFormatted;
@@ -114,8 +107,7 @@ public class Event extends Task
      * @param date the date or date-time object to format; must not be {@code null}.
      * @return the formatted date string.
      */
-    private String dateFileFormat(Object date)
-    {
+    private String dateFileFormat(Object date) {
         if (date instanceof LocalDateTime) {
             return ((LocalDateTime) date).format(DateTimeFormatter.ofPattern("d/M/yyyy HHmm"));
 

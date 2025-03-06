@@ -8,15 +8,13 @@ package amadeus.brain;
  * invalid task formats, and database errors.
  * </p>
  */
-public class AmadeusException extends Exception
-{
+public class AmadeusException extends Exception {
     /**
      * Constructs an {@code AmadeusException} with a specified error message.
      *
      * @param message The detailed error message explaining the exception.
      */
-    public AmadeusException(String message)
-    {
+    public AmadeusException(String message) {
         super(message);
     }
 
@@ -30,12 +28,11 @@ public class AmadeusException extends Exception
      *
      * @return An {@code AmadeusException} with a message prompting the user to view available commands.
      */
-    public static AmadeusException invalidCommand()
-    {
+    public static AmadeusException invalidCommand() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Command!\033[0m
-            Hmph. It seems you've entered something I don't recognize.
-            Type "\033[1;32mcommands\033[0m" to see what I can do.""");
+                ⚠️ \033[31;1mInvalid Command!\033[0m
+                Hmph. It seems you've entered something I don't recognize.
+                Type "\033[1;32mcommands\033[0m" to see what I can do.""");
     }
 
     /**
@@ -47,12 +44,11 @@ public class AmadeusException extends Exception
      * @param type The type of task (e.g., "todo", "deadline", "event") for which the argument is missing.
      * @return An {@code AmadeusException} indicating the missing argument.
      */
-    public static AmadeusException missingArgument(String type)
-    {
+    public static AmadeusException missingArgument(String type) {
         return new AmadeusException(String.format("""
-            ⚠️ \033[31;1mMissing Argument!\033[0m
-            You forgot to provide the \033[1m%s\033[0m task name/description.
-            Is your Hippocampus alright?""", type));
+                ⚠️ \033[31;1mMissing Argument!\033[0m
+                You forgot to provide the \033[1m%s\033[0m task name/description.
+                Is your Hippocampus alright?""", type));
     }
 
     /**
@@ -63,12 +59,11 @@ public class AmadeusException extends Exception
      *
      * @return An {@code AmadeusException} indicating the correct deadline format.
      */
-    public static AmadeusException invalidDeadline()
-    {
+    public static AmadeusException invalidDeadline() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Deadline Format!\033[0m
-            The correct format is: \033[1m<description> /by <date/time>\033[0m.
-            For example: "\033[3;32mdeadline Submit report /by 31/12/2025\033[0m".""");
+                ⚠️ \033[31;1mInvalid Deadline Format!\033[0m
+                The correct format is: \033[1m<description> /by <date/time>\033[0m.
+                For example: "\033[3;32mdeadline Submit report /by 31/12/2025\033[0m".""");
     }
 
     /**
@@ -81,9 +76,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidEvent() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Event Format!\033[0m
-            The correct format is: \033[1m<description> /from <start date/time> /to <end date/time>\033[0m.
-            For example: "\033[3;32mevent Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm\033[0m".""");
+                ⚠️ \033[31;1mInvalid Event Format!\033[0m
+                The correct format is: \033[1m<description> /from <start date/time> /to <end date/time>\033[0m.
+                For example: "\033[3;32mevent Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm\033[0m".""");
     }
 
     /**
@@ -96,9 +91,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidEventTime() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Event Time!\033[0m
-            The start time must be before the end time.
-            Time travel isn't possible... yet.""");
+                ⚠️ \033[31;1mInvalid Event Time!\033[0m
+                The start time must be before the end time.
+                Time travel isn't possible... yet.""");
     }
 
     /**
@@ -130,9 +125,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException missingNumber() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mMissing Task Index!\033[0m
-            Please provide the desired task index number.
-            Personally, I like the number 1.048596.""");
+                ⚠️ \033[31;1mMissing Task Index!\033[0m
+                Please provide the desired task index number.
+                Personally, I like the number 1.048596.""");
     }
 
     /**
@@ -145,9 +140,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidNumber() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Task Index!\033[0m
-            Please provide a valid task index number.
-            You do know how to count... right?""");
+                ⚠️ \033[31;1mInvalid Task Index!\033[0m
+                Please provide a valid task index number.
+                You do know how to count... right?""");
     }
 
     /**
@@ -160,9 +155,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidIndex() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Task Index!\033[0m
-            The task index you provided doesn't exist.
-            Perhaps it does in another timeline.""");
+                ⚠️ \033[31;1mInvalid Task Index!\033[0m
+                The task index you provided doesn't exist.
+                Perhaps it does in another timeline.""");
     }
 
     /**
@@ -175,15 +170,16 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException invalidDate() {
         return new AmadeusException("""
-            ⚠️ \033[31;1mInvalid Date Format!\033[0m
-            \033[4mPlease enter the date and time in one of the following formats:\033[0m
-            Date only: \033[32m2/12/2019, 2-12-2019, 2 12 2019\033[0m
-            Date & time (24-hour): \033[32mDate 18:00, Date 1800, Date 18.00\033[0m
-            Date & time (12-hour): \033[32mDate 6:00PM, Date 6pm, Date 6.30AM\033[0m""");
+                ⚠️ \033[31;1mInvalid Date Format!\033[0m
+                \033[4mPlease enter the date and time in one of the following formats:\033[0m
+                Date only: \033[32m2/12/2019, 2-12-2019, 2 12 2019\033[0m
+                Date & time (24-hour): \033[32mDate 18:00, Date 1800, Date 18.00\033[0m
+                Date & time (12-hour): \033[32mDate 6:00PM, Date 6pm, Date 6.30AM\033[0m""");
     }
     //endregion
 
     //region Database Exceptions
+
     /**
      * Creates an exception for errors while saving tasks to the file.
      * This is thrown when an IOException occurs during the save operation.
@@ -193,9 +189,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException errorSavingTask(String file) {
         return new AmadeusException(String.format("""
-            ⚠️ \033[31;1mError Saving Tasks!\033[0m
-            Something went wrong while saving tasks to the file: %s
-            Please check the file and try again.""", file));
+                ⚠️ \033[31;1mError Saving Tasks!\033[0m
+                Something went wrong while saving tasks to the file: %s
+                Please check the file and try again.""", file));
     }
 
     /**
@@ -207,9 +203,9 @@ public class AmadeusException extends Exception
      */
     public static AmadeusException errorLoadingTask(String file) {
         return new AmadeusException(String.format("""
-            ⚠️ \033[31;1mError Loading Tasks!\033[0m
-            Something went wrong while loading tasks from the file: %s
-            Please check the file and try again.""", file));
+                ⚠️ \033[31;1mError Loading Tasks!\033[0m
+                Something went wrong while loading tasks from the file: %s
+                Please check the file and try again.""", file));
     }
 
     /**

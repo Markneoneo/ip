@@ -11,8 +11,7 @@ import amadeus.workspace.TaskList;
  * The input is expected to contain a valid task index.
  * </p>
  */
-public class DeleteCommand extends Command
-{
+public class DeleteCommand extends Command {
     private final int index;
 
     /**
@@ -25,8 +24,7 @@ public class DeleteCommand extends Command
      * @param input the user input containing the task index; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty or the index is invalid.
      */
-    public DeleteCommand(String input) throws AmadeusException
-    {
+    public DeleteCommand(String input) throws AmadeusException {
         // Check if the input is empty
         if (input.isEmpty()) {
             // Missing Number in the Input Exception
@@ -49,8 +47,7 @@ public class DeleteCommand extends Command
      * @throws AmadeusException if an error occurs while deleting the task.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.deleteTask(index);
     }
 }

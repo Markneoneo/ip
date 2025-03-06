@@ -8,8 +8,7 @@ import amadeus.personality.Speech;
  * This command prints the list of commands to the console, providing usage examples.
  * </p>
  */
-public class CommandList extends Command
-{
+public class CommandList extends Command {
     /**
      * Displays the list of available commands to the console.
      * <p>
@@ -18,8 +17,7 @@ public class CommandList extends Command
      * </p>
      */
     @Override
-    public void execute()
-    {
+    public void execute() {
         Speech.sayCommands();
     }
 }

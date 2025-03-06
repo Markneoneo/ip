@@ -15,8 +15,7 @@ import java.time.LocalDateTime;
  * The input is expected to contain a description, a start time, and an end time, separated by {@code /from} and {@code /to}.
  * </p>
  */
-public class EventCommand extends Command
-{
+public class EventCommand extends Command {
     private final Event e;
 
     /**
@@ -30,8 +29,7 @@ public class EventCommand extends Command
      * @param input the user input containing the task description, start time, and end time; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty, in an invalid format, or contains an invalid time range.
      */
-    public EventCommand(String input) throws AmadeusException
-    {
+    public EventCommand(String input) throws AmadeusException {
         // Check if the input is empty
         if (input.isEmpty()) {
             // Missing Argument in the Input Exception
@@ -39,8 +37,7 @@ public class EventCommand extends Command
         }
 
         // Check if "/from" and "/to" exist before splitting
-        if (!input.contains(" /from ") || !input.contains(" /to "))
-        {
+        if (!input.contains(" /from ") || !input.contains(" /to ")) {
             // Invalid Event Format Exception
             throw AmadeusException.invalidEvent();
         }
@@ -57,17 +54,12 @@ public class EventCommand extends Command
         Object to = DateConverter.parseDate(fromToParts[1].trim());
 
         // Ensure that from is strictly before to
-        if (from instanceof LocalDateTime && to instanceof LocalDateTime)
-        {
-            if (!((LocalDateTime) from).isBefore((LocalDateTime) to))
-            {
+        if (from instanceof LocalDateTime && to instanceof LocalDateTime) {
+            if (!((LocalDateTime) from).isBefore((LocalDateTime) to)) {
                 throw AmadeusException.invalidEventTime();
             }
-        }
-        else if (from instanceof LocalDate && to instanceof LocalDate)
-        {
-            if (!((LocalDate) from).isBefore((LocalDate) to))
-            {
+        } else if (from instanceof LocalDate && to instanceof LocalDate) {
+            if (!((LocalDate) from).isBefore((LocalDate) to)) {
                 throw AmadeusException.invalidEventTime();
             }
         } else {
@@ -85,8 +77,7 @@ public class EventCommand extends Command
      * @throws AmadeusException if an error occurs while adding the task.
      */
     @Override
-    public void execute() throws AmadeusException
-    {
+    public void execute() throws AmadeusException {
         TaskList.addEvent(e);
     }
 }

@@ -14,8 +14,7 @@ import java.util.ArrayList;
  * whose descriptions contain the keyword (case-insensitive).
  * </p>
  */
-public class FindCommand extends Command
-{
+public class FindCommand extends Command {
     private final String keyword; // The keyword to search for
     private final ArrayList<Task> matchingTasks; // List of tasks matching the keyword
 
@@ -29,8 +28,7 @@ public class FindCommand extends Command
      * @param argument the user input containing the keyword to search for; must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty or invalid.
      */
-    public FindCommand(String argument) throws AmadeusException
-    {
+    public FindCommand(String argument) throws AmadeusException {
         // Check if the input is empty
         if (argument.isEmpty()) {
             throw AmadeusException.missingArgument("FIND");
@@ -40,10 +38,8 @@ public class FindCommand extends Command
         this.matchingTasks = new ArrayList<>();
 
         // Filter tasks that contain the keyword in their description
-        for (Task task : TaskList.getTaskList())
-        {
-            if (task.getName().toLowerCase().contains(keyword))
-            {
+        for (Task task : TaskList.getTaskList()) {
+            if (task.getName().toLowerCase().contains(keyword)) {
                 matchingTasks.add(task);
             }
         }
@@ -57,10 +53,8 @@ public class FindCommand extends Command
      * </p>
      */
     @Override
-    public void execute()
-    {
-        if (matchingTasks.isEmpty())
-        {
+    public void execute() {
+        if (matchingTasks.isEmpty()) {
             System.out.printf("⚠️ No tasks found containing the keyword '\033[4;1m%s\033[0m'!\n", keyword);
         } else {
             System.out.printf("🔍 Here are the tasks containing the keyword '\033[4;1m%s\033[0m':\n", keyword);
