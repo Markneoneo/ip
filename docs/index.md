@@ -39,12 +39,10 @@ Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience
     java -Dfile.encoding=UTF-8 amadeus.Amadeus
     ```
 
-- **Windows PowerShell**: Works but **no emojis**:  
+- **Windows PowerShell and cmd.exe**: Works but **no emojis**:  
   ```
   java '-Dfile.encoding=UTF-8' -jar Amadeus.jar
   ```
-
-- **Avoid cmd.exe**: It doesn’t support ANSI codes or emojis.
 
 ---
 
