@@ -227,7 +227,22 @@ public class AmadeusException extends Exception {
      * @return An AmadeusException with a message indicating the error while parsing the task.
      */
     public static AmadeusException errorParsingTask(String line) {
-        return new AmadeusException(String.format("⚠️ \033[31;1mError parsing task\033[0m from line: '%s'. Skipping.", line));
+        return new AmadeusException(
+                String.format("⚠️ \033[31;1mError parsing task\033[0m from line: '%s'. Skipping.", line));
+    }
+
+    /**
+     * Creates an exception for errors while loading the logo.
+     * This is thrown when an IOException occurs during the logo load operation.
+     *
+     * @param file The file path of the logo that failed to load.
+     * @return An {@code AmadeusException} with a message indicating the error while loading the logo.
+     */
+    public static AmadeusException errorLoadingLogo(String file) {
+        return new AmadeusException(String.format("""
+            ⚠️ \033[31;1mError Loading Logo!\033[0m
+            I was unable to load the logo from: %s
+            Perhaps it's lost in time? Check the file path and try again.""", file));
     }
     //endregion
 }

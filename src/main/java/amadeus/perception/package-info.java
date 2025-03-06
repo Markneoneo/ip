@@ -8,9 +8,12 @@
  *
  * <h2>Key Classes</h2>
  * <ul>
- *   <li>{@link amadeus.perception.Parser}: Parses user input into executable {@link amadeus.cognition.Command} objects.</li>
- *   <li>{@link amadeus.perception.DateConverter}: Converts date and time strings into {@link java.time.LocalDate} or {@link java.time.LocalDateTime} objects.</li>
- *   <li>{@link amadeus.perception.NumberConverter}: Converts number words (e.g., "twenty-one") into their numeric equivalents.</li>
+ *   <li>{@link amadeus.perception.Parser}: Parses user input into executable
+ *   {@link amadeus.cognition.Command} objects.</li>
+ *   <li>{@link amadeus.perception.DateConverter}: Converts date and time strings into
+ *   {@link java.time.LocalDate} or {@link java.time.LocalDateTime} objects.</li>
+ *   <li>{@link amadeus.perception.NumberConverter}: Converts number words
+ *   (e.g., "twenty-one") into their numeric equivalents.</li>
  * </ul>
  *
  * <h2>Usage Example</h2>

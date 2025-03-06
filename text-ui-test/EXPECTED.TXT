@@ -1,4 +1,13 @@
 ====================================================================================================
+User ID: [31;1mSalieri[0m
+[32;3mAuthenticating...[0m
+[32;3mInitializing system...[0m
+Amadeus Logo
+[34;1mGreetings.[0m I'm [31;1mKurisu Makise[0m, a.k.a. [1;38;2;255;165;0mAmadeus[0m.
+I'm here to assist you with your tasks. Let's make this timeline a productive one!
+Type "[32;1mcommands[0m" to see what I can do.
+====================================================================================================
+====================================================================================================
 ✍️ [1;38;2;255;165;0mYou currently have 【13】 pending tasks! Time to get to work![0m
 
 ⚠️[1;4;93mDEADLINES[0m⚠️

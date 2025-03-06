@@ -23,7 +23,8 @@ public class MarkCommand extends Command {
      * </p>
      *
      * @param input the user input containing the task index; must not be {@code null} or empty.
-     * @param mark  indicates whether the task should be marked as complete ({@code true}) or incomplete ({@code false}).
+     * @param mark  indicates whether the task should be marked as complete
+     *              ({@code true}) or incomplete ({@code false}).
      * @throws AmadeusException if the input is empty or the index is invalid.
      */
     public MarkCommand(String input, boolean mark) throws AmadeusException {

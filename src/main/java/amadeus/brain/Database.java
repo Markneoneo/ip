@@ -86,22 +86,22 @@ public class Database {
 
             // Create the appropriate Task object based on the type
             switch (type) {
-                case "D": // Deadline
-                    // Parse the due date into a LocalDateTime object
-                    Object by = DateConverter.parseDate(parts[3].trim());
-                    return new Deadline(description, isDone, by);
+            case "D": // Deadline
+                // Parse the due date into a LocalDateTime object
+                Object by = DateConverter.parseDate(parts[3].trim());
+                return new Deadline(description, isDone, by);
 
-                case "E": // Event
-                    // Parse the start and end times into LocalDateTime objects
-                    Object from = DateConverter.parseDate(parts[3].trim());
-                    Object to = DateConverter.parseDate(parts[4].trim());
-                    return new Event(description, isDone, from, to);
+            case "E": // Event
+                // Parse the start and end times into LocalDateTime objects
+                Object from = DateConverter.parseDate(parts[3].trim());
+                Object to = DateConverter.parseDate(parts[4].trim());
+                return new Event(description, isDone, from, to);
 
-                case "T": // ToDo
-                    return new ToDo(description, isDone);
+            case "T": // ToDo
+                return new ToDo(description, isDone);
 
-                default: // Invalid Saved Task Type Exception
-                    throw AmadeusException.invalidTaskType(type);
+            default: // Invalid Saved Task Type Exception
+                throw AmadeusException.invalidTaskType(type);
             }
         } catch (Exception e) {
             // Error parsing a Saved Task

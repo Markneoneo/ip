@@ -1,7 +1,18 @@
 package amadeus.perception;
 
 import amadeus.brain.AmadeusException;
-import amadeus.cognition.*;
+import amadeus.cognition.ByeCommand;
+import amadeus.cognition.CheckCommand;
+import amadeus.cognition.Command;
+import amadeus.cognition.CommandList;
+import amadeus.cognition.DeadlineCommand;
+import amadeus.cognition.DeleteCommand;
+import amadeus.cognition.EventCommand;
+import amadeus.cognition.FindCommand;
+import amadeus.cognition.ListCommand;
+import amadeus.cognition.MarkCommand;
+import amadeus.cognition.ResetCommand;
+import amadeus.cognition.ToDoCommand;
 
 /**
  * Handles the parsing of user input into executable commands.
@@ -16,51 +27,51 @@ public class Parser {
     /**
      * Constant representing the "bye" command.
      */
-    public final static String BYE_COMMAND = "bye";
+    public static final String BYE_COMMAND = "bye";
     /**
      * Constant representing the "commands" command.
      */
-    public final static String COMMAND_LIST = "commands";
+    public static final String COMMAND_LIST = "commands";
     /**
      * Constant representing the "list" command.
      */
-    public final static String LIST_COMMAND = "list";
+    public static final String LIST_COMMAND = "list";
     /**
      * Constant representing the "find" command.
      */
-    public final static String FIND_COMMAND = "find";
+    public static final String FIND_COMMAND = "find";
     /**
      * Constant representing the "check" command.
      */
-    public final static String CHECK_COMMAND = "check";
+    public static final String CHECK_COMMAND = "check";
     /**
      * Constant representing the "mark" command.
      */
-    public final static String MARK_COMMAND = "mark";
+    public static final String MARK_COMMAND = "mark";
     /**
      * Constant representing the "unmark" command.
      */
-    public final static String UNMARK_COMMAND = "unmark";
+    public static final String UNMARK_COMMAND = "unmark";
     /**
      * Constant representing the "delete" command.
      */
-    public final static String DELETE_COMMAND = "delete";
+    public static final String DELETE_COMMAND = "delete";
     /**
      * Constant representing the "reset" command.
      */
-    public final static String RESET_COMMAND = "reset";
+    public static final String RESET_COMMAND = "reset";
     /**
      * Constant representing the "deadline" command.
      */
-    public final static String DEADLINE_COMMAND = "deadline";
+    public static final String DEADLINE_COMMAND = "deadline";
     /**
      * Constant representing the "event" command.
      */
-    public final static String EVENT_COMMAND = "event";
+    public static final String EVENT_COMMAND = "event";
     /**
      * Constant representing the "todo" command.
      */
-    public final static String TODO_COMMAND = "todo";
+    public static final String TODO_COMMAND = "todo";
     // endregion
 
 
@@ -82,37 +93,37 @@ public class Parser {
 
         // Match the command to the appropriate Command object
         return switch (command) {
-            // Exits the command loop and terminates the interaction
-            case BYE_COMMAND -> new ByeCommand();
+        // Exits the command loop and terminates the interaction
+        case BYE_COMMAND -> new ByeCommand();
 
-            // Shows the user all possible Amadeus commands
-            case COMMAND_LIST -> new CommandList();
+        // Shows the user all possible Amadeus commands
+        case COMMAND_LIST -> new CommandList();
 
-            // Displays the current list of tasks to the user
-            case LIST_COMMAND -> new ListCommand();
+        // Displays the current list of tasks to the user
+        case LIST_COMMAND -> new ListCommand();
 
-            // Print tasks occurring on / before / after a specific date.
-            case CHECK_COMMAND -> new CheckCommand(argument);
+        // Print tasks occurring on / before / after a specific date.
+        case CHECK_COMMAND -> new CheckCommand(argument);
 
-            // Resets and Clears the saved Task List
-            case RESET_COMMAND -> new ResetCommand();
+        // Resets and Clears the saved Task List
+        case RESET_COMMAND -> new ResetCommand();
 
-            // Finds a task by searching for a keyword in the task description
-            case FIND_COMMAND -> new FindCommand(argument);
+        // Finds a task by searching for a keyword in the task description
+        case FIND_COMMAND -> new FindCommand(argument);
 
-            // Deletes a given task
-            case DELETE_COMMAND -> new DeleteCommand(argument);
+        // Deletes a given task
+        case DELETE_COMMAND -> new DeleteCommand(argument);
 
-            // Marks or unmarks a given task
-            case MARK_COMMAND, UNMARK_COMMAND -> new MarkCommand(argument, command.equals(MARK_COMMAND));
+        // Marks or unmarks a given task
+        case MARK_COMMAND, UNMARK_COMMAND -> new MarkCommand(argument, command.equals(MARK_COMMAND));
 
-            // Adds a new task of the specified type
-            case DEADLINE_COMMAND -> new DeadlineCommand(argument);
-            case EVENT_COMMAND -> new EventCommand(argument);
-            case TODO_COMMAND -> new ToDoCommand(argument);
+        // Adds a new task of the specified type
+        case DEADLINE_COMMAND -> new DeadlineCommand(argument);
+        case EVENT_COMMAND -> new EventCommand(argument);
+        case TODO_COMMAND -> new ToDoCommand(argument);
 
-            // Invalid Command Input Exception
-            default -> throw AmadeusException.invalidCommand();
+        // Invalid Command Input Exception
+        default -> throw AmadeusException.invalidCommand();
         };
     }
 }

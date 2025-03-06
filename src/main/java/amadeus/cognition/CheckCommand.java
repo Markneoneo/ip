@@ -80,8 +80,7 @@ public class CheckCommand extends Command {
                     filteredTasks.add(task);
                 } else if (isAfter && taskDateTime.isAfter(checkDateTime)) {
                     filteredTasks.add(task);
-                } else if (isExactMatch(taskDateTime, checkDateTime)) // Exact date or date-time
-                {
+                } else if (isExactMatch(taskDateTime, checkDateTime)) { // Exact date or date-time
                     filteredTasks.add(task);
                 }
             }
@@ -104,16 +103,19 @@ public class CheckCommand extends Command {
      * Executes the command by displaying the filtered tasks.
      * <p>
      * If no tasks match the specified date or date range, a message is displayed to inform the user.
-     * Otherwise, the matching tasks are displayed using {@link amadeus.personality.Speech#sayList(java.util.ArrayList)}.
+     * Otherwise, the matching tasks are displayed using
+     * {@link amadeus.personality.Speech#sayList(java.util.ArrayList)}.
      * </p>
      */
     @Override
     public void execute() {
         // Display the filtered tasks
         if (filteredTasks.isEmpty()) {
-            System.out.printf("⚠️ No tasks found occurring \033[1m%s\033[0m \033[4m%s\033[0m!\n", preposition, formattedDate);
+            System.out.printf("⚠️ No tasks found occurring \033[1m%s\033[0m \033[4m%s\033[0m!\n",
+                    preposition, formattedDate);
         } else {
-            System.out.printf("✍️ These are the Tasks occurring \033[1m%s\033[0m \033[4m%s\033[0m:\n", preposition, formattedDate);
+            System.out.printf("✍️ These are the Tasks occurring \033[1m%s\033[0m \033[4m%s\033[0m:\n",
+                    preposition, formattedDate);
             Speech.sayList(filteredTasks);
         }
     }

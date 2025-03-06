@@ -70,7 +70,8 @@ public class Event extends Task {
      */
     @Override
     public String getDetails() {
-        return "\uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) + "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
+        return "\uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) +
+                "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
     }
 
 
@@ -81,7 +82,8 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return name + " \uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) + "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
+        return name + " \uD83D\uDE80 \033[31;1mFrom:\033[0m【" + DateConverter.formatDate(from) +
+                "】 \uD83D\uDEA9 \033[31;1mTo:\033[0m【" + DateConverter.formatDate(to) + "】";
     }
 
 

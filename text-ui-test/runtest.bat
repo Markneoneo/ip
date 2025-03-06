@@ -19,16 +19,16 @@ REM run the program, feed commands from input.txt file and redirect the output t
 java -Dfile.encoding=UTF-8 -classpath ..\bin amadeus.Amadeus < input.txt > FULL_OUTPUT.TXT
 
 REM Skips the Amadeus Introduction for comparison
-powershell -Command "Get-Content FULL_OUTPUT.TXT | Select-Object -Skip 46 | Set-Content SKIP_INTRO.TXT"
+REM powershell -Command "Get-Content FULL_OUTPUT.TXT | Select-Object -Skip 46 | Set-Content SKIP_INTRO.TXT"
 
 REM compare the output to the expected output
-FC SKIP_INTRO.TXT EXPECTED.TXT
+FC FULL_OUTPUT.TXT EXPECTED.TXT
 IF ERRORLEVEL 1 (
     echo ********** TEST FAILED **********
-    echo The contents of SKIP_INTRO.TXT and EXPECTED.TXT do not match.
+    echo The contents of FULL_OUTPUT.TXT and EXPECTED.TXT do not match.
     exit /b 1
 ) ELSE (
     echo ********** TEST PASSED **********
-    echo The contents of SKIP_INTRO.TXT and EXPECTED.TXT match.
+    echo The contents of FULL_OUTPUT.TXT and EXPECTED.TXT match.
     exit /b 0
 )

@@ -49,10 +49,12 @@ public class DateConverter {
     );
 
     // Output format for dates
-    private static final DateTimeFormatter OUTPUT_DATE_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.US);
+    private static final DateTimeFormatter OUTPUT_DATE_FORMAT =
+            DateTimeFormatter.ofPattern("d MMM yyyy", Locale.US);
 
     // Output format for date-times
-    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy, h:mma", Locale.US);
+    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMAT =
+            DateTimeFormatter.ofPattern("d MMM yyyy, h:mma", Locale.US);
 
 
     /**

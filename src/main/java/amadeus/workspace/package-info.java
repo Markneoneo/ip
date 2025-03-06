@@ -22,7 +22,8 @@
  * // Create and add tasks to the task list
  * TaskList.addToDo(new ToDo("Buy groceries"));
  * TaskList.addDeadline(new Deadline("Submit report", LocalDate.of(2025, 12, 31)));
- * TaskList.addEvent(new Event("Team meeting", LocalDateTime.of(2025, 1, 1, 11, 59), LocalDateTime.of(2025, 1, 2, 12, 0)));
+ * TaskList.addEvent(new Event("Team meeting", LocalDateTime.of(2025, 1, 1, 11, 59),
+ * LocalDateTime.of(2025, 1, 2, 12, 0)));
  *
  * // Mark a task as complete
  * TaskList.markDone(1, true);

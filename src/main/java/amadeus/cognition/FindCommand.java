@@ -49,7 +49,8 @@ public class FindCommand extends Command {
      * Executes the command by displaying the tasks that match the keyword.
      * <p>
      * If no tasks match the keyword, a message is displayed to inform the user.
-     * Otherwise, the matching tasks are displayed using {@link amadeus.personality.Speech#sayList(java.util.ArrayList)}.
+     * Otherwise, the matching tasks are displayed using
+     * {@link amadeus.personality.Speech#sayList(java.util.ArrayList)}.
      * </p>
      */
     @Override

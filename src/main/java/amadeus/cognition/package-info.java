@@ -7,7 +7,8 @@
  * </p>
  * <p>
  * The classes in this package are responsible for parsing user input, performing the necessary
- * actions, and handling errors gracefully using custom exceptions from the {@link amadeus.brain.AmadeusException} class.
+ * actions, and handling errors gracefully using custom exceptions from the
+ * {@link amadeus.brain.AmadeusException} class.
  * </p>
  *
  * <h2>Key Classes</h2>

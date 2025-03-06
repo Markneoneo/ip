@@ -84,7 +84,8 @@ public class TaskList {
     public static void addEvent(Event e) throws AmadeusException {
         // Insert the Event task at the end of the Event section
         int index = 0;
-        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event)) {
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline ||
+                taskList.get(index) instanceof Event)) {
             index++;
         }
         taskList.add(index, e);
@@ -110,7 +111,8 @@ public class TaskList {
     public static void addToDo(ToDo td) throws AmadeusException {
         // Insert the ToDo task at the end of the ToDo section
         int index = 0;
-        while (index < taskList.size() && (taskList.get(index) instanceof Deadline || taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo)) {
+        while (index < taskList.size() && (taskList.get(index) instanceof Deadline ||
+                taskList.get(index) instanceof Event || taskList.get(index) instanceof ToDo)) {
             index++;
         }
         taskList.add(index, td);

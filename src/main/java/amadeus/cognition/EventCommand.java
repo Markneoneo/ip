@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
  * Command to add a new {@link amadeus.workspace.Event} task to the task list.
  * <p>
  * This command parses the user input to create an {@link amadeus.workspace.Event} task and adds it to the list.
- * The input is expected to contain a description, a start time, and an end time, separated by {@code /from} and {@code /to}.
+ * The input is expected to contain a description, a start time, and an end time,
+ * separated by {@code /from} and {@code /to}.
  * </p>
  */
 public class EventCommand extends Command {
@@ -26,7 +27,8 @@ public class EventCommand extends Command {
      * or contains an invalid time range, an {@link amadeus.brain.AmadeusException} is thrown.
      * </p>
      *
-     * @param input the user input containing the task description, start time, and end time; must not be {@code null} or empty.
+     * @param input the user input containing the task description, start time, and end time;
+     *              must not be {@code null} or empty.
      * @throws AmadeusException if the input is empty, in an invalid format, or contains an invalid time range.
      */
     public EventCommand(String input) throws AmadeusException {
