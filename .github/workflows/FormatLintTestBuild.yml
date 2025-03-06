@@ -1,0 +1,153 @@
+name: Auto Java Formatter
+
+on: push
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'Auto Formatter'
+    name: Auto Java Formatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+          distribution: 'jdk+fx'
+
+      - name: Download google-java-format
+        run: |
+          wget https://github.com/google/google-java-format/releases/download/v1.15.0/google-java-format-1.15.0-all-deps.jar -O /tmp/google-java-format.jar
+
+      - name: Fix Java formatting with google-java-format
+        run: |
+          java --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED -jar /tmp/google-java-format.jar -a --replace $(find . -name "*.java")
+
+      - name: Commit formatted code
+        run: |
+          git config --global user.name "Auto Formatter"
+          git config --global user.email "auto_formatter@gmail.com"
+
+          # Check if there are any changes
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add .
+            git commit -m "Apply google-java-format to Java files"
+            git push
+            echo "CHANGES_PUSHED=true" >> $GITHUB_ENV
+          else
+            echo "No formatting changes detected."
+            echo "CHANGES_PUSHED=false" >> $GITHUB_ENV
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    needs: format
+    if: always() 
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Detect and pull latest changes from the same branch
+        run: |
+          BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+          echo "Current branch: $BRANCH_NAME"
+          git fetch origin $BRANCH_NAME  # Fetch the latest changes from the current branch
+          git reset --hard origin/$BRANCH_NAME  # Ensure we are using the latest commit from the branch
+          git log -1  # Show latest commit for debugging
+
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          RUN-LOCAL: false
+          LINTER_RULES_PATH: config/checkstyle
+          JAVA_FILE_NAME: ../../config/checkstyle/checkstyle.xml
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVA: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    name: Run Tests with Gradle
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Detect and pull latest changes from the same branch
+        run: |
+          BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+          echo "Current branch: $BRANCH_NAME"
+          git fetch origin $BRANCH_NAME  # Fetch the latest changes from the current branch
+          git reset --hard origin/$BRANCH_NAME  # Ensure we are using the latest commit from the branch
+          git log -1  # Show latest commit for debugging
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+          distribution: 'jdk+fx'
+
+      - name: Grant execute permission for Gradle
+        run: chmod +x gradlew
+
+      - name: Run Gradle Tests
+        run: ./gradlew test
+
+  build:
+    name: Build & Upload JAR
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Detect and pull latest changes from the same branch
+        run: |
+          BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+          echo "Current branch: $BRANCH_NAME"
+          git fetch origin $BRANCH_NAME  # Fetch the latest changes from the current branch
+          git reset --hard origin/$BRANCH_NAME  # Ensure we are using the latest commit from the branch
+          git log -1  # Show latest commit for debugging
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+          distribution: 'jdk+fx'
+
+      - name: Grant execute permission for Gradle
+        run: chmod +x gradlew
+
+      - name: Build JAR without Checkstyle
+        run: ./gradlew build -x checkstyleMain -x checkstyleTest
+
+      - name: Find JAR File
+        run: |
+          JAR_PATH=$(find build/libs -name "*.jar" | head -n 1)
+          echo "JAR_PATH=$JAR_PATH" >> $GITHUB_ENV
+
+      - name: Upload JAR as an Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: javatro-jar
+          path: ${{ env.JAR_PATH }}
