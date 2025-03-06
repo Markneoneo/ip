@@ -55,50 +55,50 @@ public class Speech {
     // region Amadeus Command List
     private static final String COMMANDS =
             """
-                      ✨ \033[1;38;2;255;165;0mWelcome to Amadeus Task Manager!\033[0m ✨
-                      Here are the commands you can use to manage your tasks:
-                     \s
-                      ➤ ✍️ \033[4;1mAdding a Task\033[0m:
-                         ╰┈➤ \033[35;1mtodo 【description】\033[0m: Adds a new ToDo task.
-                              Eg: "\033[32;3mtodo Buy groceries\033[0m"
-                         ╰┈➤ \033[35;1mdeadline 【description】 /by 【due date】\033[0m: Adds a new Deadline task.
-                              Eg: "\033[32;3mdeadline Submit report /by 31/12/2025\033[0m"
-                         ╰┈➤ \033[35;1mevent 【description】 /from 【start】 /to 【end】\033[0m: Adds a new Event task.
-                              Eg: "\033[32;3mevent Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm\033[0m"
-                     \s
-                      ➤ 👀 \033[4;1mViewing Tasks\033[0m:
-                         ╰┈➤ \033[35;1mlist\033[0m: Displays all your saved tasks, organized by type.
-                         ╰┈➤ \033[35;1mfind 【description】\033[0m: Lists tasks with given keyword.
-                              Eg: "\033[32;3mfind meeting\033[0m"
-                         ╰┈➤ \033[35;1mcheck 【date/time】\033[0m: Lists tasks on a specified date/time.
-                              Eg: "\033[32;3mcheck 2/10/2025\033[0m"
-                         ╰┈➤ \033[35;1mcheck before 【date/time】\033[0m: Lists tasks before a specified date/time (inclusive).
-                              Eg: "\033[32;3mcheck before 2/10/2025 6am\033[0m"
-                         ╰┈➤ \033[35;1mcheck after 【date/time】\033[0m: Lists tasks after a specified date/time (inclusive).
-                              Eg: "\033[32;3mcheck after 2/10/2025 2359\033[0m"
-                     \s
-                      ➤ ✔️ \033[4;1mMarking Tasks\033[0m:
-                         ╰┈➤ \033[35;1mmark 【index】\033[0m: Marks a task as complete.
-                              Eg: "\033[32;3mmark 1\033[0m"
-                         ╰┈➤ \033[35;1munmark 【index】\033[0m: Marks a task as incomplete.
-                              Eg: "\033[32;3munmark 1\033[0m"
-                     \s
-                      ➤ 🗑️ \033[4;1mDeleting Tasks\033[0m:
-                         ╰┈➤ \033[35;1mdelete 【index】\033[0m: Deletes a task from the list.
-                              Eg: "\033[32;3mdelete 2\033[0m"
-                         ╰┈➤ \033[35;1mreset\033[0m: Resets and deletes the entire saved list.
-                     \s
-                      ➤ 📴 \033[4;1mLogging Off\033[0m:
-                         ╰┈➤ \033[35;1mbye\033[0m: Exits the application.
-                     \s
-                      ➤ ℹ️ \033[4;1mFormating Notice\033[0m:
-                         ╰┈➤ \033[35;1mIndex Numbers\033[0m: I am able to parse both words and integers.
-                              Eg: "\033[32;3mmark one, delete thirteen\033[0m"
-                         ╰┈➤ \033[35;1mDate Format\033[0m: I am strictly only allowing dd/mm/yyyy format. Sorry Americans!
-                              Eg: "\033[32;3m31/12/2025, 31-12-2025, 31 12 2025\033[0m"
-                         ╰┈➤ \033[35;1mTime Format\033[0m: I am able to parse both 12 (AM/PM) & 24 Hour formats.
-                              Eg: "\033[32;3m12am, 11:59pm, 11.59pm, 2359, 23:59, 23.59\033[0m"
-                    """;
+              ✨ \033[1;38;2;255;165;0mWelcome to Amadeus Task Manager!\033[0m ✨
+              Here are the commands you can use to manage your tasks:
+             \s
+              ➤ ✍️ \033[4;1mAdding a Task\033[0m:
+                 ╰┈➤ \033[35;1mtodo 【description】\033[0m: Adds a new ToDo task.
+                      Eg: "\033[32;3mtodo Buy groceries\033[0m"
+                 ╰┈➤ \033[35;1mdeadline 【description】 /by 【due date】\033[0m: Adds a new Deadline task.
+                      Eg: "\033[32;3mdeadline Submit report /by 31/12/2025\033[0m"
+                 ╰┈➤ \033[35;1mevent 【description】 /from 【start】 /to 【end】\033[0m: Adds a new Event task.
+                      Eg: "\033[32;3mevent Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm\033[0m"
+             \s
+              ➤ 👀 \033[4;1mViewing Tasks\033[0m:
+                 ╰┈➤ \033[35;1mlist\033[0m: Displays all your saved tasks, organized by type.
+                 ╰┈➤ \033[35;1mfind 【description】\033[0m: Lists tasks with given keyword.
+                      Eg: "\033[32;3mfind meeting\033[0m"
+                 ╰┈➤ \033[35;1mcheck 【date/time】\033[0m: Lists tasks on a specified date/time.
+                      Eg: "\033[32;3mcheck 2/10/2025\033[0m"
+                 ╰┈➤ \033[35;1mcheck before 【date/time】\033[0m: Lists tasks before a specified date/time (inclusive).
+                      Eg: "\033[32;3mcheck before 2/10/2025 6am\033[0m"
+                 ╰┈➤ \033[35;1mcheck after 【date/time】\033[0m: Lists tasks after a specified date/time (inclusive).
+                      Eg: "\033[32;3mcheck after 2/10/2025 2359\033[0m"
+             \s
+              ➤ ✔️ \033[4;1mMarking Tasks\033[0m:
+                 ╰┈➤ \033[35;1mmark 【index】\033[0m: Marks a task as complete.
+                      Eg: "\033[32;3mmark 1\033[0m"
+                 ╰┈➤ \033[35;1munmark 【index】\033[0m: Marks a task as incomplete.
+                      Eg: "\033[32;3munmark 1\033[0m"
+             \s
+              ➤ 🗑️ \033[4;1mDeleting Tasks\033[0m:
+                 ╰┈➤ \033[35;1mdelete 【index】\033[0m: Deletes a task from the list.
+                      Eg: "\033[32;3mdelete 2\033[0m"
+                 ╰┈➤ \033[35;1mreset\033[0m: Resets and deletes the entire saved list.
+             \s
+              ➤ 📴 \033[4;1mLogging Off\033[0m:
+                 ╰┈➤ \033[35;1mbye\033[0m: Exits the application.
+             \s
+              ➤ ℹ️ \033[4;1mFormating Notice\033[0m:
+                 ╰┈➤ \033[35;1mIndex Numbers\033[0m: I am able to parse both words and integers.
+                      Eg: "\033[32;3mmark one, delete thirteen\033[0m"
+                 ╰┈➤ \033[35;1mDate Format\033[0m: I am strictly only allowing dd/mm/yyyy format. Sorry Americans!
+                      Eg: "\033[32;3m31/12/2025, 31-12-2025, 31 12 2025\033[0m"
+                 ╰┈➤ \033[35;1mTime Format\033[0m: I am able to parse both 12 (AM/PM) & 24 Hour formats.
+                      Eg: "\033[32;3m12am, 11:59pm, 11.59pm, 2359, 23:59, 23.59\033[0m"
+            """;
     //endregion
 
 
