@@ -151,10 +151,10 @@ public class Speech {
                 """, 50);
         System.out.println(AMADEUS); // Amadeus Logo loaded from file
         saySlowly("""
-                \033[34;1mGreetings.\033[0m I'm \033[31;1mKurisu Makise\033[0m, a.k.a. \033[1;38;2;255;165;0mAmadeus\033[0m.
-                I'm here to assist you with your tasks. Let's make this timeline a productive one!
-                Type "\033[32;1mcommands\033[0m" to see what I can do.
-                """, 20);
+            \033[34;1mGreetings.\033[0m I'm \033[31;1mKurisu Makise\033[0m, a.k.a. \033[1;38;2;255;165;0mAmadeus\033[0m.
+            I'm here to assist you with your tasks. Let's make this timeline a productive one!
+            Type "\033[32;1mcommands\033[0m" to see what I can do.
+            """, 20);
         System.out.println(DIVIDER);
     }
 
@@ -192,7 +192,9 @@ public class Speech {
         if (taskList.isEmpty()) {
             System.out.println("⚠️ There are currently no pending tasks! Lucky you.");
         } else {
-            System.out.printf("✍️ \033[1;38;2;255;165;0mYou currently have 【%s】 pending tasks! Time to get to work!\033[0m\n\n", taskList.size());
+            System.out.printf(
+                    "✍️ \033[1;38;2;255;165;0mYou currently have 【%s】 pending tasks! Time to get to work!\033[0m\n\n",
+                    taskList.size());
         }
 
         int index = 0;
@@ -255,7 +257,8 @@ public class Speech {
     public static void sayTaskMarked(int index, boolean status) {
         System.out.printf("""
                 ✍️ Understood! the following task has been set to %s
-                ╰┈➤ %d.\s""", status ? "\033[92;1mComplete\033[0m ✔️. Excellent work!" : "\033[91;1mIncomplete\033[0m ❌. Don't give up!", index);
+                ╰┈➤ %d.\s""", status ? "\033[92;1mComplete\033[0m ✔️. Excellent work!" :
+                "\033[91;1mIncomplete\033[0m ❌. Don't give up!", index);
     }
 
 

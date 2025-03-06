@@ -3,9 +3,11 @@
  * <p>
  * This package includes classes responsible for:
  * <ul>
- *   <li><b>Data Persistence</b>: The {@link amadeus.brain.Database} class handles saving and loading tasks to/from a file,
+ *   <li><b>Data Persistence</b>: The {@link amadeus.brain.Database}
+ *   class handles saving and loading tasks to/from a file,
  *       ensuring data persistence across application sessions.</li>
- *   <li><b>Error Handling</b>: The {@link amadeus.brain.AmadeusException} class defines custom exceptions for domain-specific errors,
+ *   <li><b>Error Handling</b>: The {@link amadeus.brain.AmadeusException}
+ *   class defines custom exceptions for domain-specific errors,
  *       such as invalid commands, missing arguments, and file I/O issues.</li>
  * </ul>
  * <p>
@@ -15,8 +17,10 @@
  *
  * <h2>Key Classes</h2>
  * <ul>
- *   <li>{@link amadeus.brain.Database}: Manages the storage and retrieval of tasks, ensuring data persistence.</li>
- *   <li>{@link amadeus.brain.AmadeusException}: Handles domain-specific errors and provides user-friendly error messages.</li>
+ *   <li>{@link amadeus.brain.Database}:
+ *   Manages the storage and retrieval of tasks, ensuring data persistence.</li>
+ *   <li>{@link amadeus.brain.AmadeusException}:
+ *   Handles domain-specific errors and provides user-friendly error messages.</li>
  * </ul>
  *
  * <h2>Usage Example</h2>

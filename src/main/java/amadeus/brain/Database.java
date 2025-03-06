@@ -28,7 +28,7 @@ public class Database {
      * The default file path is {@code "Memory.txt"}.
      * </p>
      */
-    public final static String FILE_PATH = "Memory.txt";
+    public static final String FILE_PATH = "Memory.txt";
 
 
     /**
