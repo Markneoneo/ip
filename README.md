@@ -1,6 +1,6 @@
-# The Amadeus System
+# ✨ The Amadeus System ✨
 
-**Greetings, I'm Makise Kurisu, also known as Amadeus.**  
+👋 **Greetings, I'm Makise Kurisu, also known as Amadeus.**  
 I’m your personal assistant for managing tasks. Whether you’re a busy scientist or just someone trying to stay organized, I’m here to help you keep track of everything. Let’s make this timeline a productive one!
 
 ```
@@ -44,7 +44,7 @@ I’m your personal assistant for managing tasks. Whether you’re a busy scient
 
 ---
 
-## What I Can Do
+## ✍️ What I Can Do
 
 I’m designed to help you manage your tasks efficiently. Here’s what I can do for you:
 
@@ -56,7 +56,7 @@ I’m designed to help you manage your tasks efficiently. Here’s what I can do
 
 ---
 
-## How to Use Me
+## ℹ️ How to Use Me
 
 Using me is simple! Just type commands to add, view, or manage your tasks. Here are some examples:
 
@@ -99,7 +99,7 @@ For a full list of commands, check out the [User Guide](https://markneoneo.githu
 
 ---
 
-## Why Choose Me?
+## 🙋‍♀️ Why Choose Me?
 
 - **Flexible Date Formats**: I understand dates and times in many formats, so you don’t have to worry about getting it "just right."
 - **Automatic Saving**: Your tasks are saved automatically, so you don’t have to lift a finger.
@@ -107,7 +107,7 @@ For a full list of commands, check out the [User Guide](https://markneoneo.githu
 
 ---
 
-## Getting Started
+## 🏁 Getting Started
 
 1. Download the latest version of `Amadeus` from [here](https://github.com/Markneoneo/ip).
 2. Navigate to the folder where you saved the application and run:
@@ -141,5 +141,5 @@ Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience
 - **Avoid cmd.exe**: It doesn’t support ANSI codes or emojis.
 
 ---
-**El Psy Kongroo.**  
+⌛ **El Psy Kongroo.**  
 I hope you enjoy using me to manage your tasks. If you have any questions or feedback, feel free to reach out. Let’s make this timeline the best one yet!
