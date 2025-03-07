@@ -9,6 +9,29 @@ Welcome to **Amadeus Task Manager**, your personal assistant for managing tasks 
 
 # [View Javadocs](javadoc/index.html)
 
+## Table of Contents
+
+- [Features](#features)
+  - [Adding Tasks](#1-adding-tasks)
+    - [Add a ToDo Task](#add-a-todo-task)
+    - [Add a Deadline Task](#add-a-deadline-task)
+    - [Add an Event Task](#add-an-event-task)
+  - [Viewing Tasks](#2-viewing-tasks)
+    - [List All Tasks](#list-all-tasks)
+    - [Find Tasks by Keyword](#find-tasks-by-keyword)
+    - [Check Tasks by Date](#check-tasks-by-date)
+  - [Marking Tasks](#3-marking-tasks)
+    - [Mark a Task as Complete](#mark-a-task-as-complete)
+    - [Mark a Task as Incomplete](#mark-a-task-as-incomplete)
+  - [Deleting Tasks](#4-deleting-tasks)
+    - [Delete a Task](#delete-a-task)
+    - [Reset All Tasks](#reset-all-tasks)
+  - [Exiting the Chatbot](#5-exiting-the-chatbot)
+- [Command Summary](#command-summary)
+- [Notes](#notes)
+- [FAQ](#faq)
+
+
 ---
 
 ## Quick Start
