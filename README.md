@@ -120,7 +120,7 @@ For a full list of commands, check out the [User Guide](https://markneoneo.githu
 
 ## ⚠️ UI warning
 
-Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI:
+Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI, open in Fullscreen:
 
 - **Use Git Bash, Windows Terminal or IntelliJ**:  
   - For `.jar` files:  
