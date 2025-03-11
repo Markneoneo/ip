@@ -3,44 +3,7 @@
 👋 **Greetings, I'm Makise Kurisu, also known as Amadeus.**  
 I’m your personal assistant for managing tasks. Whether you’re a busy scientist or just someone trying to stay organized, I’m here to help you keep track of everything. Let’s make this timeline a productive one!
 
-```
-    
-                                                                   @
-                                                                @@@@
-                                                              @@@@@@
-                                                           @@@@@@#@@
-                                                         @@@@@@@@@@@
-                                                       @@@@@@@  @@@@
-                                                    @@@@@@@:    @@@@
-                                                  @@@@@@@       @@@@
-                                               -@@@@@@#         @@@@
-                                             @@@@@@@            @@@@
-                                           @@@@@@@              @@@@
-                                         @@@@@@=                @@@@
-                                      @@@@@@@                   @@@@
-                                   +@@@@@@=                     @@@@
-                                 @@@@@@@                        @@@@
-                               @@@@@@@                          @@@@
-                             @@@@@@#                            @@@@
-                          @@@@@@@+                              @@@@
-                       @@@@@@@#        @@@@@@@@@@@@@@@@@@@@@@@  @@@@
-                     @%#@*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@=@@@@@@@@@@@@@@@@@#-
-                   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=+         @@ @@@@@@@@@@@@@@@@%@@@@@@@@
-                 @@%@@@@                                     @@                       @@@
-              @@@@@@@@ @@@@@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
-            @@@#@@@    @@@   @@    @@@         @@@ @@#       @@ @@       @@@ @@       @@@ @@
-         @@@@@@@@      @@@   @@    @@@ @@@@@@@@@@@ @@@       @@ @@@@@@@@@@@@ @@       @@@ @@@@@@@@@@@
-       @@@@@@@         @@@   #@    @@@ @@       @@ @@@       @@ @@           @@       @@%          @@
-     @@@@@@@@@@@@@@@@@@@@@   @@    @@@ @@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@ @@@@@@@@@@@@
-                                   @@-                                         @@@@@@@
-                                   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                                                                   @@@@@@@+
-                                                                  @@@@@@-
-                                                                 @@@@@@
-                                                                @@@@@
-                                                                @@@
-                                                                @
-```
+![Amadeus](https://github.com/user-attachments/assets/0e7ecd31-601c-4571-91c4-b1f3c84b11cd)
 
 ---
 
@@ -53,6 +16,8 @@ I’m designed to help you manage your tasks efficiently. Here’s what I can do
 - **Mark Tasks**: Mark tasks as complete or incomplete.
 - **Delete Tasks**: Remove tasks you no longer need.
 - **Reset Tasks**: Clear your entire task list if you want a fresh start.
+
+To see everything I can do, check out the [User Guide](https://markneoneo.github.io/ip/).
 
 ---
 
@@ -94,8 +59,6 @@ Using me is simple! Just type commands to add, view, or manage your tasks. Here 
   ```
   bye
   ```
-
-For a full list of commands, check out the [User Guide](https://markneoneo.github.io/ip/).
 
 ---
 
@@ -139,5 +102,8 @@ Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience
   ```
 
 ---
-⌛ **El Psy Kongroo.**  
+**El Psy Kongroo.**  
 I hope you enjoy using me to manage your tasks. If you have any questions or feedback, feel free to reach out. Let’s make this timeline the best one yet!
+
+![Amadeus 2](https://github.com/user-attachments/assets/b47e66c8-a0e7-49fa-b3de-bd85b138d3a2)
+
