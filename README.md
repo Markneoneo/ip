@@ -17,48 +17,8 @@ I’m designed to help you manage your tasks efficiently. Here’s what I can do
 - **Delete Tasks**: Remove tasks you no longer need.
 - **Reset Tasks**: Clear your entire task list if you want a fresh start.
 
-To see everything I can do, check out the [User Guide](https://markneoneo.github.io/ip/).
-
----
-
-## ℹ️ How to Use Me
-
-Using me is simple! Just type commands to add, view, or manage your tasks. Here are some examples:
-
-- Add a to-do:  
-  ```
-  todo Buy groceries
-  ```
-
-- Add a deadline:  
-  ```
-  deadline Submit report /by 31/12/2025
-  ```
-
-- Add an event:  
-  ```
-  event Team meeting /from 1/1/2025 11:59pm /to 2/1/2025 12pm
-  ```
-
-- View all tasks:  
-  ```
-  list
-  ```
-
-- Mark a task as complete:  
-  ```
-  mark 1
-  ```
-
-- Delete a task:  
-  ```
-  delete 2
-  ```
-
-- Exit the chatbot:  
-  ```
-  bye
-  ```
+Using me is simple! Just type commands to add, view, or manage your tasks.
+### To see the full list of commands, check out the [User Guide](https://markneoneo.github.io/ip/).
 
 ---
 
@@ -81,11 +41,11 @@ Using me is simple! Just type commands to add, view, or manage your tasks. Here 
 
 ---
 
-## ⚠️ UI warning
+## ⚠️ UI Compatibility
 
-Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI, open in Fullscreen:
+Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI, open the interface in Fullscreen:
 
-- **Use Git Bash, Windows Terminal or IntelliJ**:  
+- **Git Bash, Windows Terminal or IntelliJ**:  
   - For `.jar` files:  
     ```
     java -Dfile.encoding=UTF-8 -jar Amadeus.jar
@@ -102,8 +62,9 @@ Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience
   ```
 
 ---
-**El Psy Kongroo.**  
-I hope you enjoy using me to manage your tasks. If you have any questions or feedback, feel free to reach out. Let’s make this timeline the best one yet!
+  
+I hope you enjoy using me to manage your tasks. If you have any questions or feedback, feel free to reach out!
+### El Psy Kongroo
 
 ![Amadeus 2](https://github.com/user-attachments/assets/b47e66c8-a0e7-49fa-b3de-bd85b138d3a2)
 
