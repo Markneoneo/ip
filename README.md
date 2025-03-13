@@ -33,7 +33,7 @@ Using me is simple! Just type commands to add, view, or manage your tasks.
 ## 🏁 Getting Started
 
 1. Download the latest version of `Amadeus` from [here](https://github.com/Markneoneo/ip).
-2. Navigate to the folder where you saved the application and run:
+2. Open **IntelliJ** and Navigate to the folder where you saved the application and run in **Fullscreen**:
    ```
    java -jar amadeus.jar
    ```
@@ -43,23 +43,36 @@ Using me is simple! Just type commands to add, view, or manage your tasks.
 
 ## ⚠️ UI Compatibility
 
-Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. For the best UI, open the interface in Fullscreen:
+Amadeus uses **ANSI text formatting** and **UTF-8 emojis** for a rich experience. However, not all terminals may be compatible.
 
-- **Git Bash, Windows Terminal or IntelliJ**:  
-  - For `.jar` files:  
-    ```
-    java -Dfile.encoding=UTF-8 -jar Amadeus.jar
-    ```
-  - For compiling:  
-    ```
-    javac -encoding UTF-8 -d . amadeus/*.java
-    java -Dfile.encoding=UTF-8 amadeus.Amadeus
-    ```
+- Ensure you run Amadeus in **Fullscreen** to avoid formatting issues.
 
-- **Windows PowerShell and cmd.exe**: Works but **no emojis**:  
-  ```
-  java '-Dfile.encoding=UTF-8' -jar Amadeus.jar
-  ```
+- **IntelliJ** will be the best Terminal to run Amadeus on as it displays coloured text and emojis.
+
+- If you see `?` appearing, it means the terminal is not able to parse emojis. Try the following commands:
+   - Set the code page to UTF-8 before running the JAR:
+     ```
+     chcp 65001
+     java -jar amadeus.jar
+     ```
+   - Run the JAR with explicit encoding:
+     ```
+     java -Dfile.encoding=UTF-8 -jar Amadeus.jar
+     java "-Dfile.encoding=UTF-8" -jar Amadeus.jar
+     ```
+
+   - For compiling:  
+     ```
+     javac -encoding UTF-8 -d . amadeus/*.java
+     java -Dfile.encoding=UTF-8 amadeus.Amadeus
+     ```
+
+- **Git Bash, Windows Terminal and MacOS**: These terminals work but may have unintended outputs such as:
+   - Uncoloured Emojis
+   - Unable to parse certain text colours
+   - Messed up text formatting
+
+- **Windows PowerShell and CMD.exe**: These terminals work but **do not show emojis**. 
 
 ---
   
