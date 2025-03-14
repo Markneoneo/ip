@@ -89,7 +89,5 @@ public class Amadeus {
      *
      * @param args command-line arguments (not used in this application).
      */
-    public static void main(String[] args) {
-        awaken();
-    }
+    public static void main(String[] args) { awaken(); }
 }
